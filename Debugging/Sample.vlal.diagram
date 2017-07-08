@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<visualLALDiagram dslVersion="1.0.0.0" Id="fcae598c-9728-46b8-9196-102199f94f60" absoluteBounds="0, 0, 11, 8.5" name="Sample">
+  <exampleModelMoniker Id="4cbfcb72-bdf3-42a9-b357-fc2979749980" />
+  <nestedChildShapes>
+    <exampleShape Id="581b7827-7336-445c-837f-81dcabb9c5e7" absoluteBounds="0.5, 1.75, 2, 0.75">
+      <exampleElementMoniker name="/4cbfcb72-bdf3-42a9-b357-fc2979749980/ExampleElement1" />
+    </exampleShape>
+    <exampleShape Id="7c5001aa-5cd7-4b77-9409-d55952a56613" absoluteBounds="3, 0.5, 2, 0.75">
+      <exampleElementMoniker name="/4cbfcb72-bdf3-42a9-b357-fc2979749980/ExampleElement2" />
+    </exampleShape>
+    <exampleConnector Id="ea3c4285-662c-421f-ae45-2a4b8a9c03af" edgePoints="[(1.5 : 1.75); (1.5 : 0.875); (3 : 0.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="46d11de1-b58a-4c6c-873d-e4f0751e1637">
+      <nodes>
+        <exampleShapeMoniker Id="581b7827-7336-445c-837f-81dcabb9c5e7" />
+        <exampleShapeMoniker Id="7c5001aa-5cd7-4b77-9409-d55952a56613" />
+      </nodes>
+    </exampleConnector>
+  </nestedChildShapes>
+</visualLALDiagram>

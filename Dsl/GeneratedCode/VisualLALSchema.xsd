@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="VisualLALSchema" targetNamespace="http://schemas.microsoft.com/dsltools/VisualLAL" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/dsltools/VisualLAL" xmlns:core="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import id="CoreSchema" namespace="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" />
+  <!-- LALDominio -->
+  <xsd:element name="lALDominio" type="LALDominio" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="LALDominio">
+    <xsd:annotation>
+      <xsd:documentation>The root in which all other elements are embedded. Appears as a diagram.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Relationship: DominioTemSimbolos -->
+          <xsd:element name="simbolos" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of DominioTemSimbolos</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="dominioTemSimbolos" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of DominioTemSimbolos needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- dslVersion -->
+        <xsd:attribute name="dslVersion" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Version of the model serialized in this file.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Nome -->
+        <xsd:attribute name="nome" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Nome do Domínio</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Descricao -->
+        <xsd:attribute name="descricao" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Descrição do Domínio</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- LALDominio Moniker -->
+  <xsd:element name="lALDominioMoniker" type="LALDominioMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="LALDominioMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for LALDominio instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Entrada -->
+  <xsd:element name="entrada" abstract="true" type="Entrada" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="Entrada" abstract="true" >
+    <xsd:annotation>
+      <xsd:documentation>Representa uma entrada no LAL. Pode ser um Símbolo ou um Sinônimo de um Símbolo.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Name -->
+        <xsd:attribute name="name" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Entrada Moniker -->
+  <xsd:element name="entradaMoniker" abstract="true" type="EntradaMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="EntradaMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for Entrada instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="name" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Simbolo -->
+  <xsd:element name="simbolo" type="Simbolo" substitutionGroup="entrada" />
+  <xsd:complexType name="Simbolo">
+    <xsd:annotation>
+      <xsd:documentation>Representa uma entrada única no LAL</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Entrada">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Relationship: SimboloTemNocoes -->
+          <xsd:element name="nocoes" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of SimboloTemNocoes</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="simboloTemNocoes" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of SimboloTemNocoes needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <!-- Relationship: SimboloTemImpactos -->
+          <xsd:element name="impactos" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of SimboloTemImpactos</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="simboloTemImpactos" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of SimboloTemImpactos needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <!-- Relationship: SimboloTemSinonimos -->
+          <xsd:element name="sinonimos" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of SimboloTemSinonimos</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="simboloTemSinonimos" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of SimboloTemSinonimos needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <!-- Relationship: SimboloReferences -->
+          <xsd:element name="referenciaSimbolos" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of SimboloReferences</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="simboloReferences" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of SimboloReferences needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Simbolo Moniker -->
+  <xsd:element name="simboloMoniker" type="SimboloMoniker" substitutionGroup="entradaMoniker" />
+  <xsd:complexType name="SimboloMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for Simbolo instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="EntradaMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Sinonimo -->
+  <xsd:element name="sinonimo" type="Sinonimo" substitutionGroup="entrada" />
+  <xsd:complexType name="Sinonimo">
+    <xsd:annotation>
+      <xsd:documentation>Representa uma entrada única no LAL, sendo sinônimo de um símbolo.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Entrada">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Sinonimo Moniker -->
+  <xsd:element name="sinonimoMoniker" type="SinonimoMoniker" substitutionGroup="entradaMoniker" />
+  <xsd:complexType name="SinonimoMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for Sinonimo instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="EntradaMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SubEntrada -->
+  <xsd:element name="subEntrada" abstract="true" type="SubEntrada" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="SubEntrada" abstract="true" >
+    <xsd:annotation>
+      <xsd:documentation>Representa uma Noção ou um Impacto do Símbolo</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Texto -->
+        <xsd:attribute name="texto" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SubEntrada Moniker -->
+  <xsd:element name="subEntradaMoniker" abstract="true" type="SubEntradaMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="SubEntradaMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for SubEntrada instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Nocao -->
+  <xsd:element name="nocao" type="Nocao" substitutionGroup="subEntrada" />
+  <xsd:complexType name="Nocao">
+    <xsd:annotation>
+      <xsd:documentation>É o signficado do Símbolo (denotação).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SubEntrada">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Nocao Moniker -->
+  <xsd:element name="nocaoMoniker" type="NocaoMoniker" substitutionGroup="subEntradaMoniker" />
+  <xsd:complexType name="NocaoMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for Nocao instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SubEntradaMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Impacto -->
+  <xsd:element name="impacto" type="Impacto" substitutionGroup="subEntrada" />
+  <xsd:complexType name="Impacto">
+    <xsd:annotation>
+      <xsd:documentation>Efeitos do uso/ocorrência do símbolo na aplicação ou do efeito de algo na aplicação sobre esse símbolo (conotação).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SubEntrada">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- Impacto Moniker -->
+  <xsd:element name="impactoMoniker" type="ImpactoMoniker" substitutionGroup="subEntradaMoniker" />
+  <xsd:complexType name="ImpactoMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for Impacto instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="SubEntradaMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloTemNocoes -->
+  <xsd:element name="simboloTemNocoes" type="SimboloTemNocoes" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="SimboloTemNocoes">
+    <xsd:annotation>
+      <xsd:documentation>Cada símbolo tem uma ou mais noções.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end Nocao -->
+          <xsd:element ref="nocao" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloTemNocoes Moniker -->
+  <xsd:element name="simboloTemNocoesMoniker" type="SimboloTemNocoesMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="SimboloTemNocoesMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for SimboloTemNocoes instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloTemImpactos -->
+  <xsd:element name="simboloTemImpactos" type="SimboloTemImpactos" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="SimboloTemImpactos">
+    <xsd:annotation>
+      <xsd:documentation>Cada símbolo tem um ou mais Impactos.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end Impacto -->
+          <xsd:element ref="impacto" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloTemImpactos Moniker -->
+  <xsd:element name="simboloTemImpactosMoniker" type="SimboloTemImpactosMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="SimboloTemImpactosMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for SimboloTemImpactos instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloTemSinonimos -->
+  <xsd:element name="simboloTemSinonimos" type="SimboloTemSinonimos" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="SimboloTemSinonimos">
+    <xsd:annotation>
+      <xsd:documentation>Cada símbolo pode ter nenhum ou muitos Sinônimos</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end Sinonimo -->
+          <xsd:element ref="sinonimo" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloTemSinonimos Moniker -->
+  <xsd:element name="simboloTemSinonimosMoniker" type="SimboloTemSinonimosMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="SimboloTemSinonimosMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for SimboloTemSinonimos instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- DominioTemSimbolos -->
+  <xsd:element name="dominioTemSimbolos" type="DominioTemSimbolos" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="DominioTemSimbolos">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end Simbolo -->
+          <xsd:element ref="simbolo" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- DominioTemSimbolos Moniker -->
+  <xsd:element name="dominioTemSimbolosMoniker" type="DominioTemSimbolosMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="DominioTemSimbolosMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for DominioTemSimbolos instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloReferences -->
+  <xsd:element name="simboloReferences" type="SimboloReferences" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="SimboloReferences">
+    <xsd:annotation>
+      <xsd:documentation>Cada Símbolo está ligado a outro atravês de hyperlinks; Esses hyperlinks estão nas Noções e/ou Impactos.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end Simbolo -->
+          <xsd:element ref="simboloMoniker" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- SimboloReferences Moniker -->
+  <xsd:element name="simboloReferencesMoniker" type="SimboloReferencesMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="SimboloReferencesMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for SimboloReferences instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>
+

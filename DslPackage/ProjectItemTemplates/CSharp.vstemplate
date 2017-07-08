@@ -1,0 +1,17 @@
+﻿<!--DSL Tools Language Template-->
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TemplateData>
+		<TemplateID>{d3a89f77-7aa9-486a-a07a-3f96e140f86b}</TemplateID>
+		<Name Package="{92b8be84-5876-454a-a110-d7663866aacd}" ID="103"/>
+		<Description Package="{92b8be84-5876-454a-a110-d7663866aacd}" ID="102"/>
+		<Icon Package="{92b8be84-5876-454a-a110-d7663866aacd}" ID="201" />
+		<ProjectType>CSharp</ProjectType>
+		<SortOrder>360</SortOrder>
+		<DefaultName>VisualLAL.vlal</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<ProjectItem TargetFileName="$fileinputname$.vlal">vlal.vlal</ProjectItem>
+		<ProjectItem TargetFileName="$fileinputname$.vlal.diagram">vlal.diagram</ProjectItem>
+	</TemplateContent>
+</VSTemplate>
+
