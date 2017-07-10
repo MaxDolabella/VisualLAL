@@ -135,7 +135,7 @@ namespace Maxsys.VisualLAL
 	/// <summary>
 	/// Double-derived class to allow easier code customization.
 	/// </summary>
-	[VSShell::ProvideMenuResource("1000.ctmenu", 1)]
+	[VSShell::ProvideMenuResource("1000.ctmenu", 2)]
 	[VSShell::ProvideToolboxItems(1)]
 	[global::Microsoft.VisualStudio.TextTemplating.VSHost.ProvideDirectiveProcessor(typeof(global::Maxsys.VisualLAL.VisualLALDirectiveProcessor), global::Maxsys.VisualLAL.VisualLALDirectiveProcessor.VisualLALDirectiveProcessorName, "A directive processor that provides access to VisualLAL files")]
 	[global::System.Runtime.InteropServices.Guid(Constants.VisualLALPackageId)]

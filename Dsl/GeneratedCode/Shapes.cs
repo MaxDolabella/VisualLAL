@@ -376,7 +376,7 @@ namespace Maxsys.VisualLAL
 																				null);
 					mappings[localCompartmentMappingsOffset+2] = new DslDiagrams::ElementListCompartmentMapping(
 																				"SinonimoCompartment", 
-																				global::Maxsys.VisualLAL.Entrada.NameDomainPropertyId, 
+																				global::Maxsys.VisualLAL.Entrada.NomeDomainPropertyId, 
 																				global::Maxsys.VisualLAL.Sinonimo.DomainClassId, 
 																				GetElementsFromSimboloForSinonimoCompartment,
 																				null,

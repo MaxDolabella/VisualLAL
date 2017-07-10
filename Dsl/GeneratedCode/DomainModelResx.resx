@@ -126,7 +126,7 @@
     <comment>DisplayName for DslLibrary &apos;VisualLAL&apos;</comment>
   </data>
   <data name="Maxsys.VisualLAL.LALDominio.Description" xml:space="preserve">
-    <value>The root in which all other elements are embedded. Appears as a diagram.</value>
+    <value>É o objeto que contém todos os Símbolos</value>
     <comment>Description for DomainClass &apos;LALDominio&apos;</comment>
   </data>
   <data name="Maxsys.VisualLAL.LALDominio.DisplayName" xml:space="preserve">
@@ -157,13 +157,13 @@
     <value>Entrada</value>
     <comment>DisplayName for DomainClass &apos;Entrada&apos;</comment>
   </data>
-  <data name="Maxsys.VisualLAL.Entrada/Name.Description" xml:space="preserve">
-    <value>Description for Maxsys.VisualLAL.Entrada.Name</value>
-    <comment>Description for DomainProperty &apos;Name&apos; on DomainClass &apos;Entrada&apos;</comment>
+  <data name="Maxsys.VisualLAL.Entrada/Nome.Description" xml:space="preserve">
+    <value>Nome da entrada (Símbolo ou Sinônimo).</value>
+    <comment>Description for DomainProperty &apos;Nome&apos; on DomainClass &apos;Entrada&apos;</comment>
   </data>
-  <data name="Maxsys.VisualLAL.Entrada/Name.DisplayName" xml:space="preserve">
-    <value>Name</value>
-    <comment>DisplayName for DomainProperty &apos;Name&apos; on DomainClass &apos;Entrada&apos;</comment>
+  <data name="Maxsys.VisualLAL.Entrada/Nome.DisplayName" xml:space="preserve">
+    <value>Nome</value>
+    <comment>DisplayName for DomainProperty &apos;Nome&apos; on DomainClass &apos;Entrada&apos;</comment>
   </data>
   <data name="Maxsys.VisualLAL.Simbolo.Description" xml:space="preserve">
     <value>Representa uma entrada única no LAL</value>
@@ -426,11 +426,11 @@
     <comment>Toolbox item tab name</comment>
   </data>
   <data name="SimboloToolboxItem" xml:space="preserve">
-    <value>Simbolo</value>
+    <value>Símbolo</value>
     <comment>Toolbox item name</comment>
   </data>
   <data name="SimboloToolboxTooltip" xml:space="preserve">
-    <value>Simbolo</value>
+    <value>Representa uma entrada única no LAL</value>
     <comment>Toolbox tooltip text</comment>
   </data>
   <data name="UnresolvedToolboxItem" xml:space="preserve">

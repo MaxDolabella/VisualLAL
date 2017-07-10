@@ -13,7 +13,7 @@ namespace Maxsys.VisualLAL
 {
 	/// <summary>
 	/// DomainClass LALDominio
-	/// The root in which all other elements are embedded. Appears as a diagram.
+	/// É o objeto que contém todos os Símbolos
 	/// </summary>
 	[DslDesign::DisplayNameResource("Maxsys.VisualLAL.LALDominio.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 	[DslDesign::DescriptionResource("Maxsys.VisualLAL.LALDominio.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
@@ -58,7 +58,7 @@ namespace Maxsys.VisualLAL
 		/// <summary>
 		/// Storage for Nome
 		/// </summary>
-		private global::System.String nomePropertyStorage = string.Empty;
+		private global::System.String nomePropertyStorage = "Domínio1";
 		
 		/// <summary>
 		/// Gets or sets the value of Nome domain property.
@@ -66,6 +66,7 @@ namespace Maxsys.VisualLAL
 		/// </summary>
 		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.LALDominio/Nome.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Maxsys.VisualLAL.LALDominio/Nome.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue("Domínio1")]
 		[DslModeling::DomainObjectId("e3218d11-375d-446e-ad1b-9c97bde094c5")]
 		public global::System.String Nome
 		{
@@ -151,6 +152,7 @@ namespace Maxsys.VisualLAL
 		/// Gets or sets the value of Descricao domain property.
 		/// Descrição do Domínio
 		/// </summary>
+		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.LALDominio/Descricao.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Maxsys.VisualLAL.LALDominio/Descricao.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 		[DslModeling::DomainObjectId("6823ac45-166e-47b9-9f98-4e6389ada820")]
@@ -346,7 +348,7 @@ namespace Maxsys.VisualLAL
 	[DslDesign::DescriptionResource("Maxsys.VisualLAL.Entrada.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 	[DslModeling::DomainModelOwner(typeof(global::Maxsys.VisualLAL.VisualLALDomainModel))]
 	[global::System.CLSCompliant(true)]
-	[global::System.Diagnostics.DebuggerDisplay("{GetType().Name,nq} (Name = {namePropertyStorage})")]
+	[global::System.Diagnostics.DebuggerDisplay("{GetType().Name,nq} (Nome = {nomePropertyStorage})")]
 	[DslModeling::DomainObjectId("89b49b9b-0d4a-4805-a5ed-525489297abf")]
 	public abstract partial class Entrada : DslModeling::ModelElement
 	{
@@ -366,60 +368,60 @@ namespace Maxsys.VisualLAL
 		{
 		}
 		#endregion
-		#region Name domain property code
+		#region Nome domain property code
 		
 		/// <summary>
-		/// Name domain property Id.
+		/// Nome domain property Id.
 		/// </summary>
-		public static readonly global::System.Guid NameDomainPropertyId = new global::System.Guid(0xf9568314, 0x2ba8, 0x4682, 0x89, 0x54, 0xdc, 0x1f, 0xd3, 0x1e, 0x9c, 0x13);
+		public static readonly global::System.Guid NomeDomainPropertyId = new global::System.Guid(0xf9568314, 0x2ba8, 0x4682, 0x89, 0x54, 0xdc, 0x1f, 0xd3, 0x1e, 0x9c, 0x13);
 		
 		/// <summary>
-		/// Storage for Name
+		/// Storage for Nome
 		/// </summary>
-		private global::System.String namePropertyStorage = string.Empty;
+		private global::System.String nomePropertyStorage = string.Empty;
 		
 		/// <summary>
-		/// Gets or sets the value of Name domain property.
-		/// Description for Maxsys.VisualLAL.Entrada.Name
+		/// Gets or sets the value of Nome domain property.
+		/// Nome da entrada (Símbolo ou Sinônimo).
 		/// </summary>
-		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.Entrada/Name.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
-		[DslDesign::DescriptionResource("Maxsys.VisualLAL.Entrada/Name.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.Entrada/Nome.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.Entrada/Nome.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 		[DslModeling::ElementName]
 		[DslModeling::DomainObjectId("f9568314-2ba8-4682-8954-dc1fd31e9c13")]
-		public global::System.String Name
+		public global::System.String Nome
 		{
 			[global::System.Diagnostics.DebuggerStepThrough]
 			get
 			{
-				return namePropertyStorage;
+				return nomePropertyStorage;
 			}
 			[global::System.Diagnostics.DebuggerStepThrough]
 			set
 			{
-				NamePropertyHandler.Instance.SetValue(this, value);
+				NomePropertyHandler.Instance.SetValue(this, value);
 			}
 		}
 		/// <summary>
-		/// Value handler for the Entrada.Name domain property.
+		/// Value handler for the Entrada.Nome domain property.
 		/// </summary>
-		internal sealed partial class NamePropertyHandler : DslModeling::DomainPropertyValueHandler<Entrada, global::System.String>
+		internal sealed partial class NomePropertyHandler : DslModeling::DomainPropertyValueHandler<Entrada, global::System.String>
 		{
-			private NamePropertyHandler() { }
+			private NomePropertyHandler() { }
 		
 			/// <summary>
-			/// Gets the singleton instance of the Entrada.Name domain property value handler.
+			/// Gets the singleton instance of the Entrada.Nome domain property value handler.
 			/// </summary>
-			public static readonly NamePropertyHandler Instance = new NamePropertyHandler();
+			public static readonly NomePropertyHandler Instance = new NomePropertyHandler();
 		
 			/// <summary>
-			/// Gets the Id of the Entrada.Name domain property.
+			/// Gets the Id of the Entrada.Nome domain property.
 			/// </summary>
 			public sealed override global::System.Guid DomainPropertyId
 			{
 				[global::System.Diagnostics.DebuggerStepThrough]
 				get
 				{
-					return NameDomainPropertyId;
+					return NomeDomainPropertyId;
 				}
 			}
 			
@@ -431,7 +433,7 @@ namespace Maxsys.VisualLAL
 			public override sealed global::System.String GetValue(Entrada element)
 			{
 				if (element == null) throw new global::System.ArgumentNullException("element");
-				return element.namePropertyStorage;
+				return element.nomePropertyStorage;
 			}
 		
 			/// <summary>
@@ -447,7 +449,7 @@ namespace Maxsys.VisualLAL
 				if (newValue != oldValue)
 				{
 					ValueChanging(element, oldValue, newValue);
-					element.namePropertyStorage = newValue;
+					element.nomePropertyStorage = newValue;
 					ValueChanged(element, oldValue, newValue);
 				}
 			}
@@ -843,7 +845,7 @@ namespace Maxsys.VisualLAL
 		/// <summary>
 		/// Storage for Texto
 		/// </summary>
-		private global::System.String textoPropertyStorage = string.Empty;
+		private global::System.String textoPropertyStorage = "Texo_Aqui";
 		
 		/// <summary>
 		/// Gets or sets the value of Texto domain property.
@@ -852,6 +854,7 @@ namespace Maxsys.VisualLAL
 		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.SubEntrada/Texto.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Maxsys.VisualLAL.SubEntrada/Texto.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue("Texo_Aqui")]
 		[DslModeling::DomainObjectId("b6e929b1-3aec-484c-a2c2-14c65e02983b")]
 		public global::System.String Texto
 		{

@@ -1,14 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Dsl xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="253d7860-58df-4bfe-b270-918282b83122" Description="Ferramenta para representar graficamente um Léxico Ampliado da Linguagem" Name="VisualLAL" DisplayName="VisualLAL" Namespace="Maxsys.VisualLAL" ProductName="VisualLAL" CompanyName="Maxsys" PackageGuid="92b8be84-5876-454a-a110-d7663866aacd" PackageNamespace="Maxsys.VisualLAL" xmlns="http://schemas.microsoft.com/VisualStudio/2005/DslTools/DslDefinitionModel">
+<Dsl xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="253d7860-58df-4bfe-b270-918282b83122" Description="Ferramenta para representar graficamente um Léxico Ampliado da Linguagem" Name="VisualLAL" DisplayName="VisualLAL" Namespace="Maxsys.VisualLAL" MajorVersion="0" MinorVersion="9" ProductName="VisualLAL" CompanyName="Maxsys" PackageGuid="92b8be84-5876-454a-a110-d7663866aacd" PackageNamespace="Maxsys.VisualLAL" xmlns="http://schemas.microsoft.com/VisualStudio/2005/DslTools/DslDefinitionModel">
   <Classes>
-    <DomainClass Id="731968b2-470a-405d-9f66-e7b0db7cd416" Description="The root in which all other elements are embedded. Appears as a diagram." Name="LALDominio" DisplayName="LALDominio" Namespace="Maxsys.VisualLAL">
+    <DomainClass Id="731968b2-470a-405d-9f66-e7b0db7cd416" Description="É o objeto que contém todos os Símbolos" Name="LALDominio" DisplayName="LALDominio" Namespace="Maxsys.VisualLAL">
       <Properties>
-        <DomainProperty Id="e3218d11-375d-446e-ad1b-9c97bde094c5" Description="Nome do Domínio" Name="Nome" DisplayName="Nome">
+        <DomainProperty Id="e3218d11-375d-446e-ad1b-9c97bde094c5" Description="Nome do Domínio" Name="Nome" DisplayName="Nome" DefaultValue="Domínio1">
           <Type>
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
         </DomainProperty>
         <DomainProperty Id="6823ac45-166e-47b9-9f98-4e6389ada820" Description="Descrição do Domínio" Name="Descricao" DisplayName="Descrição">
+          <Attributes>
+            <ClrAttribute Name="System.ComponentModel.Editor">
+              <Parameters>
+                <AttributeParameter Value="typeof(System.ComponentModel.Design.MultilineStringEditor)" />
+                <AttributeParameter Value="typeof(System.Drawing.Design.UITypeEditor)" />
+              </Parameters>
+            </ClrAttribute>
+          </Attributes>
           <Type>
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
@@ -28,7 +36,8 @@
     <DomainClass Id="89b49b9b-0d4a-4805-a5ed-525489297abf" Description="Representa uma entrada no LAL. Pode ser um Símbolo ou um Sinônimo de um Símbolo." Name="Entrada" DisplayName="Entrada" InheritanceModifier="Abstract" Namespace="Maxsys.VisualLAL">
       <Notes>Cada Entrada deve ser única. Não podem haver duas ou mais Entradas com a mesma propriedade nome.</Notes>
       <Properties>
-        <DomainProperty Id="f9568314-2ba8-4682-8954-dc1fd31e9c13" Description="Description for Maxsys.VisualLAL.Entrada.Name" Name="Name" DisplayName="Name" IsElementName="true">
+        <DomainProperty Id="f9568314-2ba8-4682-8954-dc1fd31e9c13" Description="Nome da entrada (Símbolo ou Sinônimo)." Name="Nome" DisplayName="Nome" IsElementName="true">
+          <Notes>Nome deve ser único no LAL.</Notes>
           <Type>
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
@@ -73,7 +82,7 @@
     </DomainClass>
     <DomainClass Id="5381e9e9-a48d-4682-849a-113bf8a98bbc" Description="Representa uma Noção ou um Impacto do Símbolo" Name="SubEntrada" DisplayName="SubEntrada" InheritanceModifier="Abstract" Namespace="Maxsys.VisualLAL">
       <Properties>
-        <DomainProperty Id="b6e929b1-3aec-484c-a2c2-14c65e02983b" Description="Description for Maxsys.VisualLAL.SubEntrada.Texto" Name="Texto" DisplayName="Texto">
+        <DomainProperty Id="b6e929b1-3aec-484c-a2c2-14c65e02983b" Description="Texto da Noção/Impacto" Name="Texto" DisplayName="Texto" DefaultValue="Texto_Aqui">
           <Attributes>
             <ClrAttribute Name="System.ComponentModel.Editor">
               <Parameters>
@@ -202,7 +211,7 @@
     <ExternalType Name="Color" Namespace="System.Drawing" />
   </Types>
   <Shapes>
-    <CompartmentShape Id="047c248e-a76e-48d9-8ad9-2b5e2df2be30" Description="Representação gráfica de um Símbolo" Name="SimboloCompartment" DisplayName="Compartmento de Símbolo" Namespace="Maxsys.VisualLAL" FixedTooltipText="Compartmento de Símbolo" FillColor="WhiteSmoke" InitialWidth="2" InitialHeight="0.3" OutlineThickness="0.0005" FillGradientMode="ForwardDiagonal" Geometry="RoundedRectangle">
+    <CompartmentShape Id="047c248e-a76e-48d9-8ad9-2b5e2df2be30" Description="Representação gráfica de um Símbolo" Name="SimboloCompartment" DisplayName="Compartmento de Símbolo" Namespace="Maxsys.VisualLAL" FixedTooltipText="Compartmento de Símbolo" FillColor="WhiteSmoke" InitialWidth="2" InitialHeight="0.3" OutlineThickness="0" FillGradientMode="ForwardDiagonal" Geometry="RoundedRectangle">
       <ShapeHasDecorators Position="InnerTopCenter" HorizontalOffset="0" VerticalOffset="0">
         <TextDecorator Name="NomeTextDecorator" DisplayName="Nome Text Decorator" DefaultText="NomeTextDecorator" FontStyle="Bold, Italic" FontSize="10" />
       </ShapeHasDecorators>
@@ -215,7 +224,7 @@
     </CompartmentShape>
   </Shapes>
   <Connectors>
-    <Connector Id="a0900da9-7a9b-4f5e-9e66-b72c3b14019c" Description="Representa existência de pelo menos 1 hyperlink entre os Símbolos conectados." Name="HyperlinkConnector" DisplayName="Hyperlink" Namespace="Maxsys.VisualLAL" FixedTooltipText="Hyperlink" Color="Silver" Thickness="0.0125" />
+    <Connector Id="a0900da9-7a9b-4f5e-9e66-b72c3b14019c" Description="Representa existência de pelo menos 1 hyperlink entre os Símbolos conectados." Name="HyperlinkConnector" DisplayName="Hyperlink" Namespace="Maxsys.VisualLAL" FixedTooltipText="Hyperlink" Color="Silver" Thickness="0.02" />
   </Connectors>
   <XmlSerializationBehavior Name="VisualLALSerializationBehavior" Namespace="Maxsys.VisualLAL">
     <ClassData>
@@ -239,11 +248,11 @@
       <XmlClassData TypeName="VisualLALDiagram" MonikerAttributeName="" SerializeId="true" MonikerElementName="visualLALDiagramMoniker" ElementName="visualLALDiagram" MonikerTypeName="VisualLALDiagramMoniker">
         <DiagramMoniker Name="VisualLALDiagram" />
       </XmlClassData>
-      <XmlClassData TypeName="Entrada" MonikerAttributeName="name" SerializeId="true" MonikerElementName="entradaMoniker" ElementName="entrada" MonikerTypeName="EntradaMoniker">
+      <XmlClassData TypeName="Entrada" MonikerAttributeName="nome" SerializeId="true" MonikerElementName="entradaMoniker" ElementName="entrada" MonikerTypeName="EntradaMoniker">
         <DomainClassMoniker Name="Entrada" />
         <ElementData>
-          <XmlPropertyData XmlName="name" IsMonikerKey="true">
-            <DomainPropertyMoniker Name="Entrada/Name" />
+          <XmlPropertyData XmlName="nome" IsMonikerKey="true">
+            <DomainPropertyMoniker Name="Entrada/Nome" />
           </XmlPropertyData>
         </ElementData>
       </XmlClassData>
@@ -323,7 +332,7 @@
       </LinkConnectDirective>
     </ConnectionBuilder>
   </ConnectionBuilders>
-  <Diagram Id="4d9461df-e2b9-4133-b184-7f598d7b68ab" Description="Representa graficamento o Léxico Ampliado da Linguagem para um determinado domínio" Name="VisualLALDiagram" DisplayName="Diagrama do Léxico Ampliado da Linguagem" Namespace="Maxsys.VisualLAL">
+  <Diagram Id="4d9461df-e2b9-4133-b184-7f598d7b68ab" Description="Representa graficamento o Léxico Ampliado da Linguagem para um determinado domínio" Name="VisualLALDiagram" DisplayName="Diagrama do Léxico Ampliado da Linguagem" Namespace="Maxsys.VisualLAL" FillColor="Window">
     <Class>
       <DomainClassMoniker Name="LALDominio" />
     </Class>
@@ -337,7 +346,7 @@
           <TextDecoratorMoniker Name="SimboloCompartment/NomeTextDecorator" />
           <PropertyDisplayed>
             <PropertyPath>
-              <DomainPropertyMoniker Name="Entrada/Name" />
+              <DomainPropertyMoniker Name="Entrada/Nome" />
             </PropertyPath>
           </PropertyDisplayed>
         </DecoratorMap>
@@ -371,18 +380,24 @@
           </ElementsDisplayed>
           <PropertyDisplayed>
             <PropertyPath>
-              <DomainPropertyMoniker Name="Entrada/Name" />
+              <DomainPropertyMoniker Name="Entrada/Nome" />
             </PropertyPath>
           </PropertyDisplayed>
         </CompartmentMap>
       </CompartmentShapeMap>
     </ShapeMaps>
+    <ConnectorMaps>
+      <ConnectorMap>
+        <ConnectorMoniker Name="HyperlinkConnector" />
+        <DomainRelationshipMoniker Name="SimboloReferences" />
+      </ConnectorMap>
+    </ConnectorMaps>
   </Diagram>
   <Designer CopyPasteGeneration="CopyPasteOnly" FileExtension="vlal" EditorGuid="54f7a544-5de7-4c80-9687-6bbfdcd6251f">
     <RootClass>
       <DomainClassMoniker Name="LALDominio" />
     </RootClass>
-    <XmlSerializationDefinition CustomPostLoad="false">
+    <XmlSerializationDefinition CustomPostLoad="true">
       <XmlSerializationBehaviorMoniker Name="VisualLALSerializationBehavior" />
     </XmlSerializationDefinition>
     <ToolboxTab TabText="VisualLAL">
@@ -390,7 +405,7 @@
         <DomainClassMoniker Name="Simbolo" />
       </ElementTool>
     </ToolboxTab>
-    <Validation UsesMenu="false" UsesOpen="false" UsesSave="false" UsesLoad="false" />
+    <Validation UsesMenu="true" UsesOpen="true" UsesSave="true" UsesLoad="true" />
     <DiagramMoniker Name="VisualLALDiagram" />
   </Designer>
   <Explorer ExplorerGuid="3c234f57-6ad8-4db1-8b0c-07ae6f348283" Title="VisualLAL Explorer">

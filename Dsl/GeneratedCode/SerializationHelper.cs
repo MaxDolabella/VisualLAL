@@ -407,61 +407,86 @@ namespace Maxsys.VisualLAL
 			{
 				using (global::System.IO.FileStream fileStream = global::System.IO.File.OpenRead(fileName))
 				{
-					DslModeling::SerializationContext serializationContext = new DslModeling::SerializationContext(directory, fileStream.Name, serializationResult);
-					this.InitializeSerializationContext(partition, serializationContext, true);
-					DslModeling::TransactionContext transactionContext = new DslModeling::TransactionContext();
-					transactionContext.Add(DslModeling::SerializationContext.TransactionContextKey, serializationContext);
-					using (DslModeling::Transaction t = partition.Store.TransactionManager.BeginTransaction("Load Model from " + fileName, true, transactionContext))
-					{
-						// Ensure there is some content in the file.  Blank (or almost blank, to account for encoding header bytes, etc.)
-						// files will cause a new root element to be created and returned. 
-						if (fileStream.Length > 5)
+		
+					using (DslModeling::Transaction postT = partition.Store.TransactionManager.BeginTransaction("PostLoad Model", true))
+					{		
+						DslModeling::SerializationContext serializationContext = new DslModeling::SerializationContext(directory, fileStream.Name, serializationResult);
+						this.InitializeSerializationContext(partition, serializationContext, true);
+						DslModeling::TransactionContext transactionContext = new DslModeling::TransactionContext();
+						transactionContext.Add(DslModeling::SerializationContext.TransactionContextKey, serializationContext);
+						using (DslModeling::Transaction t = partition.Store.TransactionManager.BeginTransaction("Load Model from " + fileName, true, transactionContext))
 						{
-							try
+							// Ensure there is some content in the file.  Blank (or almost blank, to account for encoding header bytes, etc.)
+							// files will cause a new root element to be created and returned. 
+							if (fileStream.Length > 5)
 							{
-								global::System.Xml.XmlReaderSettings settings = VisualLALSerializationHelper.Instance.CreateXmlReaderSettings(serializationContext, false);
-								using (global::System.Xml.XmlReader reader = global::System.Xml.XmlReader.Create(fileStream, settings))
+								try
 								{
-									// Attempt to read the encoding.
-									reader.Read(); // Move to the first node - will be the XmlDeclaration if there is one.
-									global::System.Text.Encoding encoding;
-									if (this.TryGetEncoding(reader, out encoding))
+									global::System.Xml.XmlReaderSettings settings = VisualLALSerializationHelper.Instance.CreateXmlReaderSettings(serializationContext, false);
+									using (global::System.Xml.XmlReader reader = global::System.Xml.XmlReader.Create(fileStream, settings))
 									{
-										serializationResult.Encoding = encoding;
-									}
-	
-									// Load any additional domain models that are required
-									DslModeling::SerializationUtilities.ResolveDomainModels(reader, serializerLocator, partition.Store);
-								
-									reader.MoveToContent();
-	
+										// Attempt to read the encoding.
+										reader.Read(); // Move to the first node - will be the XmlDeclaration if there is one.
+										global::System.Text.Encoding encoding;
+										if (this.TryGetEncoding(reader, out encoding))
+										{
+											serializationResult.Encoding = encoding;
+										}
+		
+										// Load any additional domain models that are required
+										DslModeling::SerializationUtilities.ResolveDomainModels(reader, serializerLocator, partition.Store);
 									
-									modelRoot = modelRootSerializer.TryCreateInstance(serializationContext, reader, partition) as LALDominio;
-									if (modelRoot != null && !serializationResult.Failed)
-									{
-										this.ReadRootElement(serializationContext, modelRoot, reader, schemaResolver);
+										reader.MoveToContent();
+		
+										
+										modelRoot = modelRootSerializer.TryCreateInstance(serializationContext, reader, partition) as LALDominio;
+										if (modelRoot != null && !serializationResult.Failed)
+										{
+											this.ReadRootElement(serializationContext, modelRoot, reader, schemaResolver);
+										}
 									}
+		
 								}
-	
+								catch (global::System.Xml.XmlException xEx)
+								{
+									DslModeling::SerializationUtilities.AddMessage(
+										serializationContext,
+										DslModeling::SerializationMessageKind.Error,
+										xEx
+									);
+								}
 							}
-							catch (global::System.Xml.XmlException xEx)
+					
+							if(modelRoot == null && !serializationResult.Failed)
 							{
-								DslModeling::SerializationUtilities.AddMessage(
-									serializationContext,
-									DslModeling::SerializationMessageKind.Error,
-									xEx
-								);
+								// create model root if it doesn't exist.
+								modelRoot = this.CreateModelHelper(partition);
 							}
+							if (t.IsActive)
+								t.Commit();
+						} // End Inner Tx
+		
+						// Fire PostLoad customization code whether load has succeeded or not
+						// Provide a method in a partial class with the following signature:
+						
+						///// <summary>
+						///// Customize Model Loading.
+						///// </summary>
+						///// <param name="serializationResult">Stores serialization result from the load operation.</param>
+						///// <param name="partition">Partition in which the new LALDominio instance will be created.</param>
+						///// <param name="fileName">Name of the file from which the LALDominio instance will be deserialized.</param>
+						///// <param name="modelRoot">The root of the file that was loaded.</param>
+						// private void OnPostLoadModel(DslModeling::SerializationResult serializationResult, DslModeling::Partition partition, string fileName, LALDominio modelRoot )
+	
+						this.OnPostLoadModel(serializationResult, partition, fileName, modelRoot);
+						if (serializationResult.Failed)
+						{	// Serialization error encountered, rollback the middle transaction.
+							modelRoot = null;
+							postT.Rollback();
 						}
-				
-						if(modelRoot == null && !serializationResult.Failed)
-						{
-							// create model root if it doesn't exist.
-							modelRoot = this.CreateModelHelper(partition);
-						}
-						if (t.IsActive)
-							t.Commit();
-					} // End Inner Tx
+						if (postT.IsActive)
+							postT.Commit();
+					} // End PostLoad Tx
 	
 					// Do load-time validation if a ValidationController is provided.
 					if (!serializationResult.Failed && validationController != null)
@@ -722,6 +747,7 @@ namespace Maxsys.VisualLAL
 		/// An ISerializerLocator that will be used to locate any additional domain model types required to load the model. Can be null.
 		/// </param>
 		/// <returns>The loaded LALDominio instance.</returns>
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "Generated code.")]
 		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "Generated code.")]
 		public virtual LALDominio LoadModelAndDiagram(DslModeling::SerializationResult serializationResult, DslModeling::Partition modelPartition, string modelFileName, DslModeling::Partition diagramPartition, string diagramFileName, DslModeling::ISchemaResolver schemaResolver, DslValidation::ValidationController validationController, DslModeling::ISerializerLocator serializerLocator)
 		{
@@ -771,51 +797,79 @@ namespace Maxsys.VisualLAL
 						this.InitializeSerializationContext(diagramPartition, serializationContext, true);
 						DslModeling::TransactionContext transactionContext = new DslModeling::TransactionContext();
 						transactionContext.Add(DslModeling::SerializationContext.TransactionContextKey, serializationContext);
-						
-						using (DslModeling::Transaction t = diagramPartition.Store.TransactionManager.BeginTransaction("LoadDiagram", true, transactionContext))
+		
+						using (DslModeling::Transaction postT = diagramPartition.Store.TransactionManager.BeginTransaction("PostLoad Model and Diagram", true, transactionContext))
 						{
-							// Ensure there is some content in the file. Blank (or almost blank, to account for encoding header bytes, etc.)
-							// files will cause a new diagram to be created and returned 
-							if (fileStream.Length > 5)
+							
+							using (DslModeling::Transaction t = diagramPartition.Store.TransactionManager.BeginTransaction("LoadDiagram", true, transactionContext))
 							{
-								global::System.Xml.XmlReaderSettings settings = VisualLALSerializationHelper.Instance.CreateXmlReaderSettings(serializationContext, false);
-								try
+								// Ensure there is some content in the file. Blank (or almost blank, to account for encoding header bytes, etc.)
+								// files will cause a new diagram to be created and returned 
+								if (fileStream.Length > 5)
 								{
-									using (global::System.Xml.XmlReader reader = global::System.Xml.XmlReader.Create(fileStream, settings))
+									global::System.Xml.XmlReaderSettings settings = VisualLALSerializationHelper.Instance.CreateXmlReaderSettings(serializationContext, false);
+									try
 									{
-										reader.MoveToContent();
-										diagram = diagramSerializer.TryCreateInstance(serializationContext, reader, diagramPartition) as VisualLALDiagram;
-										if (diagram != null)
+										using (global::System.Xml.XmlReader reader = global::System.Xml.XmlReader.Create(fileStream, settings))
 										{
-											this.ReadRootElement(serializationContext, diagram, reader, schemaResolver);
+											reader.MoveToContent();
+											diagram = diagramSerializer.TryCreateInstance(serializationContext, reader, diagramPartition) as VisualLALDiagram;
+											if (diagram != null)
+											{
+												this.ReadRootElement(serializationContext, diagram, reader, schemaResolver);
+											}
 										}
 									}
+									catch (global::System.Xml.XmlException xEx)
+									{
+										DslModeling::SerializationUtilities.AddMessage(
+											serializationContext,
+											DslModeling::SerializationMessageKind.Error,
+											xEx
+										);
+									}
+									if (serializationResult.Failed)
+									{	
+										// Serialization error encountered, rollback the transaction.
+										diagram = null;
+										t.Rollback();
+									}
 								}
-								catch (global::System.Xml.XmlException xEx)
+								
+								if(diagram == null && !serializationResult.Failed)
 								{
-									DslModeling::SerializationUtilities.AddMessage(
-										serializationContext,
-										DslModeling::SerializationMessageKind.Error,
-										xEx
-									);
+									// Create diagram if it doesn't exist
+									diagram = this.CreateDiagramHelper(diagramPartition, modelRoot);
 								}
-								if (serializationResult.Failed)
-								{	
-									// Serialization error encountered, rollback the transaction.
-									diagram = null;
-									t.Rollback();
-								}
-							}
+								
+								if (t.IsActive)
+									t.Commit();
+							} // End inner Tx
+	
+							// Fire PostLoad customization code whether Load succeeded or not
+							// Provide a method in a partial class with the following signature:
 							
-							if(diagram == null && !serializationResult.Failed)
-							{
-								// Create diagram if it doesn't exist
-								diagram = this.CreateDiagramHelper(diagramPartition, modelRoot);
+							///// <summary>
+							///// Customize Model and Diagram Loading.
+							///// </summary>
+							///// <param name="serializationResult">Stores serialization result from the load operation.</param>
+							///// <param name="modelPartition">Partition in which the new DslLibrary instance will be created.</param>
+							///// <param name="modelFileName">Name of the file from which the DslLibrary instance will be deserialized.</param>
+							///// <param name="diagramPartition">Partition in which the new DslDesignerDiagram instance will be created.</param>
+							///// <param name="diagramFileName">Name of the file from which the DslDesignerDiagram instance will be deserialized.</param>
+							///// <param name="modelRoot">The root of the file that was loaded.</param>
+							///// <param name="diagram">The diagram matching the modelRoot.</param>
+							// private void OnPostLoadModelAndDiagram(DslModeling::SerializationResult serializationResult, DslModeling::Partition modelPartition, string modelFileName, DslModeling::Partition diagramPartition, string diagramFileName, LALDominio modelRoot, VisualLALDiagram diagram)
+	
+							this.OnPostLoadModelAndDiagram(serializationResult, modelPartition, modelFileName, diagramPartition, diagramFileName, modelRoot, diagram);
+							if (serializationResult.Failed)
+							{	// Serialization error encountered, rollback the middle transaction.
+									modelRoot = null;
+									postT.Rollback();
 							}
-							
-							if (t.IsActive)
-								t.Commit();
-						} // End inner Tx
+							if (postT.IsActive)
+								postT.Commit();
+						} // End MiddleTx					
 	
 						// Do load-time validation if a ValidationController is provided.
 						if (!serializationResult.Failed && validationController != null)

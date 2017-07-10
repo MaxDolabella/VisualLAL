@@ -91,6 +91,14 @@
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomCode\CommandSet.cs" />
+    <Compile Include="CustomCode\VisualLALDocView.cs" />
+    <Compile Include="CustomCode\WrappingForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomCode\WrappingForm.Designer.cs">
+      <DependentUpon>WrappingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeneratedCode\CommandSet.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,6 +196,9 @@
     <Service Include="{508349B6-6B84-4df5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomCode\WrappingForm.resx">
+      <DependentUpon>WrappingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <SubType>Designer</SubType>
       <MergeWithCTO>true</MergeWithCTO>

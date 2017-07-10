@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lALDominio xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="6eb65167-7676-4366-bf1a-d9af23df42c7" nome="Exemplo VisualLAL" descricao="Este é um Léxico Ampliado da Linguagem de exemplo. Serve apenas para testar se os itens estão sendo salvos de maneira correta." xmlns="http://schemas.microsoft.com/dsltools/VisualLAL">
+  <simbolos>
+    <dominioTemSimbolos Id="8e98b1ed-c0d1-4a7c-a2d9-017e5817067d">
+      <simbolo Id="00cc8bd9-7392-4061-9b5d-e63e792c83fc" nome="Simbolo1">
+        <nocoes>
+          <simboloTemNocoes Id="00ce5aeb-2174-4548-a369-e1ca799fb7f9">
+            <nocao Id="13f4da5e-53b1-4474-bec3-1665d4083c8d" texto="Texo_Aqui s1 asdasddasd" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="a285b5ed-5de0-428e-a33f-c48a0e96eed8">
+            <impacto Id="d606bb31-f757-4bac-a85a-8ef600060f04" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="4539ffef-371d-4a5e-8cf4-33505980be54">
+            <sinonimo Id="b4440ac0-b698-4dc0-8425-42ff93e2ed73" nome="s1" />
+          </simboloTemSinonimos>
+        </sinonimos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="f2619d73-c63d-49b0-b3f0-d750d332be67">
+      <simbolo Id="849e47c8-0352-4b15-acd7-88a5903e296d" nome="Simbolo2">
+        <nocoes>
+          <simboloTemNocoes Id="c8f4390e-c437-41c0-9769-f7acf78f8e5e">
+            <nocao Id="28ef6d6c-44a0-45f5-b058-e7bc6fc8b242" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="6a93aa42-7254-4791-9024-e782d582820f">
+            <nocao Id="1c51d940-fbd0-4c4d-8484-9d122c575b60" texto="Texo_Aqui adsadds s1 sdsdsd" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="c0e3713e-c65f-49d2-aaf5-f119c690bd9d">
+            <impacto Id="f626b313-ceac-44b6-ba9b-de2431bfdbc8" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="460a1d2d-a0c0-4f39-a260-7849ea828880">
+            <impacto Id="1edb9384-5014-42f5-876c-f50869143ce6" texto="sdsadsdsd Simbolo1" />
+          </simboloTemImpactos>
+        </impactos>
+        <referenciaSimbolos>
+          <simboloReferences Id="4be1c739-de41-4e1b-9a8b-02392efc65df">
+            <simboloMoniker nome="/6eb65167-7676-4366-bf1a-d9af23df42c7/Simbolo1" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+  </simbolos>
+</lALDominio>

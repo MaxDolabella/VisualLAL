@@ -1,0 +1,18 @@
+﻿
+var model = modelRoot.Store.GetDomainModel(id)  as LALDominio
+var compartmento = PresentationViewsSubject.GetPresentation(simbolo).FirstOrDefault() as SimboloCompartment;
+
+var compartmentos = modelRoot.Store.ElementDirectory.FindElements<SimboloCompartment>();
+
+using (var transaction = modelRoot.Store.TransactionManager.BeginTransaction("AutoLayoutShapeElements"))
+{
+    try
+    {
+        docView.CurrentDiagram.AutoLayoutShapeElements(compartments);
+        transaction.Commit(); // Don't forget this!  
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(ex.Message);
+    }
+}

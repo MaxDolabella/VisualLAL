@@ -5,7 +5,7 @@
   <xsd:element name="lALDominio" type="LALDominio" substitutionGroup="core:modelElement" />
   <xsd:complexType name="LALDominio">
     <xsd:annotation>
-      <xsd:documentation>The root in which all other elements are embedded. Appears as a diagram.</xsd:documentation>
+      <xsd:documentation>É o objeto que contém todos os Símbolos</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="core:ModelElement">
@@ -85,8 +85,12 @@
             <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <!-- Property: Name -->
-        <xsd:attribute name="name" type="xsd:string" use="required" />
+        <!-- Property: Nome -->
+        <xsd:attribute name="nome" type="xsd:string" use="required" >
+          <xsd:annotation>
+            <xsd:documentation>Nome da entrada (Símbolo ou Sinônimo).</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -99,7 +103,7 @@
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="core:ModelElementMoniker">
-        <xsd:attribute name="name" type="xsd:string" >
+        <xsd:attribute name="nome" type="xsd:string" >
           <xsd:annotation>
             <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
           </xsd:annotation>

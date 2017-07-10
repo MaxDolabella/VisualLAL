@@ -83,6 +83,7 @@ namespace Maxsys.VisualLAL
 				typeof(HyperlinkConnector),
 				typeof(SimboloCompartment),
 				typeof(global::Maxsys.VisualLAL.FixUpDiagram),
+				typeof(global::Maxsys.VisualLAL.ConnectorRolePlayerChanged),
 				typeof(global::Maxsys.VisualLAL.CompartmentItemAddRule),
 				typeof(global::Maxsys.VisualLAL.CompartmentItemDeleteRule),
 				typeof(global::Maxsys.VisualLAL.CompartmentItemRolePlayerChangeRule),
@@ -101,7 +102,7 @@ namespace Maxsys.VisualLAL
 			{
 				new DomainMemberInfo(typeof(LALDominio), "Nome", LALDominio.NomeDomainPropertyId, typeof(LALDominio.NomePropertyHandler)),
 				new DomainMemberInfo(typeof(LALDominio), "Descricao", LALDominio.DescricaoDomainPropertyId, typeof(LALDominio.DescricaoPropertyHandler)),
-				new DomainMemberInfo(typeof(Entrada), "Name", Entrada.NameDomainPropertyId, typeof(Entrada.NamePropertyHandler)),
+				new DomainMemberInfo(typeof(Entrada), "Nome", Entrada.NomeDomainPropertyId, typeof(Entrada.NomePropertyHandler)),
 				new DomainMemberInfo(typeof(SubEntrada), "Texto", SubEntrada.TextoDomainPropertyId, typeof(SubEntrada.TextoPropertyHandler)),
 			};
 		}
@@ -341,6 +342,7 @@ namespace Maxsys.VisualLAL
 			
 			DslModeling::RuleManager ruleManager = store.RuleManager;
 			ruleManager.EnableRule(typeof(global::Maxsys.VisualLAL.FixUpDiagram));
+			ruleManager.EnableRule(typeof(global::Maxsys.VisualLAL.ConnectorRolePlayerChanged));
 			ruleManager.EnableRule(typeof(global::Maxsys.VisualLAL.CompartmentItemAddRule));
 			ruleManager.EnableRule(typeof(global::Maxsys.VisualLAL.CompartmentItemDeleteRule));
 			ruleManager.EnableRule(typeof(global::Maxsys.VisualLAL.CompartmentItemRolePlayerChangeRule));
@@ -357,6 +359,7 @@ namespace Maxsys.VisualLAL
 			
 			DslModeling::RuleManager ruleManager = store.RuleManager;
 			ruleManager.DisableRule(typeof(global::Maxsys.VisualLAL.FixUpDiagram));
+			ruleManager.DisableRule(typeof(global::Maxsys.VisualLAL.ConnectorRolePlayerChanged));
 			ruleManager.DisableRule(typeof(global::Maxsys.VisualLAL.CompartmentItemAddRule));
 			ruleManager.DisableRule(typeof(global::Maxsys.VisualLAL.CompartmentItemDeleteRule));
 			ruleManager.DisableRule(typeof(global::Maxsys.VisualLAL.CompartmentItemRolePlayerChangeRule));

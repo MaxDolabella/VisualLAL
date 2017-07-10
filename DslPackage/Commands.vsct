@@ -14,5 +14,73 @@
   <Extern href="DSLToolsCmdID.h"/>
   <Include href="GeneratedCode\GeneratedVsct.vsct"/>
   <Commands package="guidPkg">
+
+    <!-- Define a group - a section in the menu -->
+    <Groups>
+      <Group guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup" priority="0x0100">
+        <!-- These symbols are defined in GeneratedVSCT.vsct -->
+        <Parent guid="guidCmdSet" id="menuidContext" />
+      </Group>
+
+    </Groups>
+    <!-- Define a button - a menu item - inside the Group -->
+    <Buttons>
+      <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidCollapseAllContextMenuCommand"
+        priority="0x0100" type="Button">
+        <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
+        <!-- If you do not want to place the command in your own Group,   
+         use Parent guid="guidCmdSet" id="grpidContextMain".  
+         These symbols are defined in GeneratedVSCT.vsct -->
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Collapse All Symbols</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidExpandAllContextMenuCommand"
+        priority="0x0100" type="Button">
+        <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Expand All Symbols</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidAlignSymbolsContextMenuCommand"
+        priority="0x0100" type="Button">
+        <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Align Symbols</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
   </Commands>
+
+
+  <VisibilityConstraints>
+    <!-- Ensures the command is only loaded for this DSL -->
+    <VisibilityItem guid="guidDiagramToolsMenuCmdSet" id="cmdidCollapseAllContextMenuCommand"
+      context="guidEditor"/>
+
+    <VisibilityItem guid="guidDiagramToolsMenuCmdSet" id="cmdidExpandAllContextMenuCommand"
+      context="guidEditor"/>
+
+    <VisibilityItem guid="guidDiagramToolsMenuCmdSet" id="cmdidAlignSymbolsContextMenuCommand"
+      context="guidEditor"/>
+  </VisibilityConstraints>
+
+  <Symbols>
+    <!-- Substitute a unique GUID for the placeholder: -->
+    <GuidSymbol name="guidDiagramToolsMenuCmdSet"
+      value="{9BE22312-4F7D-48BB-A5CB-2F0FA41597BB}" >
+      <IDSymbol name="grpidDiagramToolsMenuGroup" value="0x01001"/>
+      <IDSymbol name="cmdidCollapseAllContextMenuCommand" value="0x00001"/>
+      <IDSymbol name="cmdidExpandAllContextMenuCommand" value="0x00002"/>
+      <IDSymbol name="cmdidAlignSymbolsContextMenuCommand" value="0x00003"/>
+    </GuidSymbol>
+  </Symbols>
+
+  
 </CommandTable>

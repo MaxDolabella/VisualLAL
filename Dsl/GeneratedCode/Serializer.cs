@@ -706,9 +706,10 @@ namespace Maxsys.VisualLAL
 				global::System.String propValue = instanceOfLALDominio.Nome;
 				if (!serializationContext.Result.Failed)
 				{
-					if (!string.IsNullOrEmpty(propValue))
+					if (propValue != null && (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(propValue, "Domínio1") != 0))
+					{	// No need to write the value out if it's the same as default value.
 						VisualLALSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "nome", propValue);
-	
+					}
 				}
 			}
 			// Descricao
@@ -927,20 +928,20 @@ namespace Maxsys.VisualLAL
 			Entrada instanceOfEntrada = element as Entrada;
 			global::System.Diagnostics.Debug.Assert(instanceOfEntrada != null, "Expecting an instance of Entrada");
 	
-			// Name
+			// Nome
 			if (!serializationContext.Result.Failed)
 			{
-				string attribName = VisualLALSerializationHelper.Instance.ReadAttribute(serializationContext, element, reader, "name");
-				if (attribName != null)
+				string attribNome = VisualLALSerializationHelper.Instance.ReadAttribute(serializationContext, element, reader, "nome");
+				if (attribNome != null)
 				{
-					global::System.String valueOfName;
-					if (DslModeling::SerializationUtilities.TryGetValue<global::System.String>(serializationContext, attribName, out valueOfName))
+					global::System.String valueOfNome;
+					if (DslModeling::SerializationUtilities.TryGetValue<global::System.String>(serializationContext, attribNome, out valueOfNome))
 					{
-						instanceOfEntrada.Name = valueOfName;
+						instanceOfEntrada.Nome = valueOfNome;
 					}
 					else
 					{	// Invalid property value, ignored.
-						VisualLALSerializationBehaviorSerializationMessages.IgnoredPropertyValue(serializationContext, reader, "name", typeof(global::System.String), attribName);
+						VisualLALSerializationBehaviorSerializationMessages.IgnoredPropertyValue(serializationContext, reader, "nome", typeof(global::System.String), attribNome);
 					}
 				}
 			}
@@ -1230,13 +1231,13 @@ namespace Maxsys.VisualLAL
 			Entrada instanceOfEntrada = element as Entrada;
 			global::System.Diagnostics.Debug.Assert(instanceOfEntrada != null, "Expecting an instance of Entrada");
 	
-			// Name
+			// Nome
 			if (!serializationContext.Result.Failed)
 			{
-				global::System.String propValue = instanceOfEntrada.Name;
+				global::System.String propValue = instanceOfEntrada.Nome;
 				if (!serializationContext.Result.Failed)
 				{
-					VisualLALSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "name", propValue);
+					VisualLALSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "nome", propValue);
 				}
 			}
 		}
@@ -1263,7 +1264,7 @@ namespace Maxsys.VisualLAL
 			Entrada instance = element as Entrada;
 			global::System.Diagnostics.Debug.Assert(instance != null, "Expecting an instance of Entrada!");
 	
-			string key = instance.Name;
+			string key = instance.Nome;
 			string containerMoniker = null;
 			DslModeling::ModelElement container = DslModeling::DomainClassInfo.FindEmbeddingElement(instance);
 			if(container != null)
@@ -1386,7 +1387,7 @@ namespace Maxsys.VisualLAL
 		public override string MonikerAttributeName
 		{
 			[global::System.Diagnostics.DebuggerStepThrough]
-			get { return @"name"; }
+			get { return @"nome"; }
 		}
 		#endregion
 	
@@ -2232,7 +2233,7 @@ namespace Maxsys.VisualLAL
 			Simbolo instance = element as Simbolo;
 			global::System.Diagnostics.Debug.Assert(instance != null, "Expecting an instance of Simbolo!");
 	
-			string key = instance.Name;
+			string key = instance.Nome;
 			string containerMoniker = null;
 			DslModeling::ModelElement container = instance.Dominio;
 			if(container != null)
@@ -2355,7 +2356,7 @@ namespace Maxsys.VisualLAL
 		public override string MonikerAttributeName
 		{
 			[global::System.Diagnostics.DebuggerStepThrough]
-			get { return @"name"; }
+			get { return @"nome"; }
 		}
 		#endregion
 	
@@ -2814,7 +2815,7 @@ namespace Maxsys.VisualLAL
 			Sinonimo instance = element as Sinonimo;
 			global::System.Diagnostics.Debug.Assert(instance != null, "Expecting an instance of Sinonimo!");
 	
-			string key = instance.Name;
+			string key = instance.Nome;
 			string containerMoniker = null;
 			DslModeling::ModelElement container = DslModeling::DomainClassInfo.FindEmbeddingElement(instance);
 			if(container != null)
@@ -3300,9 +3301,10 @@ namespace Maxsys.VisualLAL
 				global::System.String propValue = instanceOfSubEntrada.Texto;
 				if (!serializationContext.Result.Failed)
 				{
-					if (!string.IsNullOrEmpty(propValue))
+					if (propValue != null && (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(propValue, "Texo_Aqui") != 0))
+					{	// No need to write the value out if it's the same as default value.
 						VisualLALSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "texto", propValue);
-	
+					}
 				}
 			}
 		}

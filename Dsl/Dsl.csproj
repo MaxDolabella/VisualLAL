@@ -81,6 +81,49 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializationHelper.cs</LastGenOutput>
     </None>
+    <Compile Include="CustomCode\Utils\DisplayText.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\ImpactoSpecification\TextoNaoPodeSerVazioSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\ImpactoSpecification\TextoDeveSerUnicoEmSeuSimboloSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\NocaoSpecification\TextoNaoPodeSerVazioSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\NocaoSpecification\TextoDeveSerUnicoEmSeuSimboloSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\SimboloSpecification\DeveTerPeloMenosUmImpactoSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\SimboloSpecification\DeveTerPeloMenosUmaNocaoSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\SimboloSpecification\NomeNaoPodeSerVazioSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\SimboloSpecification\NomeDeveSerUnicoEntreTodosOsNomesDeSimbolosESinonimosSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\SinonimoSpecification\NomeNaoPodeSerVazioSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Specification\SinonimoSpecification\NomeDeveSerUnicoEntreTodosOsNomesDeSimbolosESinonimosSpecification.cs" />
+    <Compile Include="CustomCode\DomainClasses\Validation\ImpactoValidation\ImpactoValidator.cs" />
+    <Compile Include="CustomCode\DomainClasses\Validation\NocaoValidation\NotionValidator.cs" />
+    <Compile Include="CustomCode\DomainClasses\Validation\SimboloValidation\SimboloValidator.cs" />
+    <Compile Include="CustomCode\DomainClasses\Validation\SinonimoValidation\SinonimoValidator.cs" />
+    <Compile Include="CustomCode\ValidacoesVisualLAL.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\Interfaces\Specification\ISpecification.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\Interfaces\Validation\IRule.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\Interfaces\Validation\IValidator.cs" />
+    <Compile Include="CustomCode\LELSerializationBehavior.cs" />
+    <Compile Include="CustomCode\ControleEntradas\EntryMap\MapaDeEntrada.cs" />
+    <Compile Include="CustomCode\ControleEntradas\EntryMap\EntryMapSet.cs" />
+    <Compile Include="CustomCode\ControleEntradas\EntryMap\EventArgs\MapaDeEntradaEventArgs.cs" />
+    <Compile Include="CustomCode\ControleEntradas\EntryMap\EventArgs\MapaDeEntradaAtualizadoEventArgs.cs" />
+    <Compile Include="CustomCode\ControleEntradas\LELMaps.cs" />
+    <Compile Include="CustomCode\ControleEntradas\LinkMap\EventArgs\LinkMapEventArgs.cs" />
+    <Compile Include="CustomCode\ControleEntradas\LinkMap\MapaDeReferencia.cs" />
+    <Compile Include="CustomCode\ControleEntradas\LinkMap\LinkMapSet.cs" />
+    <Compile Include="CustomCode\PrincipioDaCircularidade\Specification\ErrorLevelSpecification\CadaSimboloDeveReferenciarOuSerReferenciadoPorOutroSimboloSpecification.cs" />
+    <Compile Include="CustomCode\PrincipioDaCircularidade\Validation\PrincipioDaCircularidadeErrorLevelValidator.cs" />
+    <Compile Include="CustomCode\DomainClasses\Rules\Impacto.cs" />
+    <Compile Include="CustomCode\DomainClasses\Rules\Nocao.cs" />
+    <Compile Include="CustomCode\DomainClasses\Rules\RegistroDeRegras.cs" />
+    <Compile Include="CustomCode\DomainClasses\Rules\Simbolo.cs" />
+    <Compile Include="CustomCode\DomainClasses\Rules\Sinonimo.cs" />
+    <Compile Include="CustomCode\DomainClasses\SimboloToString.cs" />
+    <Compile Include="CustomCode\Utils\HTMLHelper.cs" />
+    <Compile Include="CustomCode\Utils\MessageBoxUtils.cs" />
+    <Compile Include="CustomCode\Utils\TextHelper.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\Validation\Rule.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\Validation\Validator.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\ValueObjects\ValidationError.cs" />
+    <Compile Include="CustomCode\ValidationSpecificationDesignPattern\ValueObjects\ValidationResult.cs" />
     <Compile Include="GeneratedCode\ConnectionBuilders.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,6 +254,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainModel.cs</LastGenOutput>
     </None>
+    <Content Include="ANOTAÇÕES.txt" />
     <Content Include="GeneratedCode\VisualLALSchema.xsd">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,5 +297,9 @@
     <Content Include="Resources\ExampleShapeToolBitmap.bmp" />
     <EmbeddedResource Include="Resources\ConnectorSourceSearch.cur" />
     <EmbeddedResource Include="Resources\ConnectorTargetSearch.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomCode\PrincipioDaCircularidade\Specification\MessageLevelSpecification\" />
+    <Folder Include="CustomCode\PrincipioDaCircularidade\Specification\WarningLevelSpecification\" />
   </ItemGroup>
 </Project>
