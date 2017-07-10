@@ -7,7 +7,7 @@ namespace Maxsys.VisualLAL.CustomCode.PrincipioDaCircularidade.Specification.Err
     {
         public bool IsSatisfiedBy(Simbolo obj)
         {
-            var hasReference = VisualLALMapeamento.Instance.Referencias
+            var hasReference = VisualLALMapeamento.Instance.MapaReferencias
                 .Any(m =>
                 m.SimboloOrigemId.Equals(obj.Id) ||
                 m.SimboloDestinoId.Equals(obj.Id));

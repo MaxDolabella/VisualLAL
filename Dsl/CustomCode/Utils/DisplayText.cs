@@ -53,7 +53,7 @@ namespace Maxsys.VisualLAL.CustomCode
 
 
             //novoSize
-            var novoSize = Measure(textField, subCompartimento, subEntrada.Texto);
+            var novoSize = Measure(textField, compartimento, subEntrada.Texto);
             return novoSize;
         }
     }

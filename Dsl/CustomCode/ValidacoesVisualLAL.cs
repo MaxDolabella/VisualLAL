@@ -31,12 +31,22 @@ namespace Maxsys.VisualLAL
         }
 
         [ValidationMethod(ValidationCategories.Menu | ValidationCategories.Save)]
-        private void PrincipioDaCircularidadeValidation(ValidationContext context)
+        private void PrincipioDaCircularidadeErroValidation(ValidationContext context)
         {
             var resultadoValidacao = new PrincipioDaCircularidadeErrorLevelValidator().Validate(this);
             foreach (var erro in resultadoValidacao.Errors)
             {
                 context.LogError(erro.Message, "ErroPrincipioDaCircularidade", this);
+            }
+        }
+
+        [ValidationMethod(ValidationCategories.Menu | ValidationCategories.Save)]
+        private void PrincipioDaCircularidadeAlertaValidation(ValidationContext context)
+        {
+            var resultadoValidacao = new PrincipioDaCircularidadeWarningLevelValidator().Validate(this);
+            foreach (var erro in resultadoValidacao.Errors)
+            {
+                context.LogWarning(erro.Message, "AlertaPrincipioDaCircularidade", this);
             }
         }
     }

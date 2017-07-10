@@ -23,11 +23,13 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
                 SimboloOrigemId = (subEntradaOrigem as Impacto).Simbolo.Id;
 
             //SimboloDestinoId:
-            var entrada = subEntradaOrigem.Store.ElementDirectory.FindElement(mapaDeEntrada.EntradaId);
+            var entrada = subEntradaOrigem.Store.ElementDirectory.FindElement(mapaDeEntrada.EntradaId) as Entrada;
             if (entrada is Simbolo)
                 SimboloDestinoId = entrada.Id;
-            else
+            else if (entrada is Sinonimo)
                 SimboloDestinoId = (entrada as Sinonimo).Simbolo.Id;
+            else
+                throw new ArgumentException($"Entrada não é Simbolo nem Sinonimo.");
 
             EntradaReferenciada = mapaDeEntrada.EntradaUnica;
             SubEntradaOrigemId = subEntradaOrigem.Id;

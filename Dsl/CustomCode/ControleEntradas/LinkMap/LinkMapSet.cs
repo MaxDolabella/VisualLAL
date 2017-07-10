@@ -74,6 +74,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         public void SetStore(Store store)
         {
             _store = store;
+            /*debug*/System.Diagnostics.Debug.WriteLine($"MapeamentoReferencias._store = [{_store.Id}]");
         }
 
         public bool HasLinkMap(Simbolo simbolo1, Simbolo simbolo2)
@@ -147,13 +148,11 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         /// <param name="mapaEntrada">Representa um <typeparamref name="MapaDeEntrada"/> para o qual se deseja buscar novas referências</param>
         public void AnalisaEAdicionaMapaDeReferenciaParaNovaEntrada(MapaDeEntrada mapaEntrada)
         {
-            var entrada = _store.ElementDirectory.FindElement(mapaEntrada.EntradaId);
             var subEntradas = _store.ElementDirectory.FindElements<SubEntrada>();
-
-            foreach (var subEntrada in subEntradas)
-            {
-                AnalisaEAdicionaMapaDeReferencia(mapaEntrada, subEntrada);
-            }
+            
+            /*debug*/System.Diagnostics.Debug.WriteLine($"AnalisaEAdicionaMapaDeReferenciaParaNovaEntrada mapa[{mapaEntrada.EntradaUnica}] _store[{_store.Id}] subEntradas[{subEntradas.Count()}]");
+            foreach (var item in subEntradas)
+                AnalisaEAdicionaMapaDeReferencia(mapaEntrada, item as SubEntrada);
         }
 
         /// <summary>
@@ -166,6 +165,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
         public void AtualizaMapaDeReferenciaAposAlteracaoDeEntrada(MapaDeEntrada mapaAntigo, MapaDeEntrada mapaNovo)
         {
+            /*debug*/System.Diagnostics.Debug.WriteLine($"Entrou em AtualizaMapaDeReferenciaAposAlteracaoDeEntrada o[{mapaAntigo.EntradaUnica}] n[{mapaNovo.EntradaUnica}]");
             RemoveReferenciasDeEntrada(mapaAntigo);
             AnalisaEAdicionaMapaDeReferenciaParaNovaEntrada(mapaNovo);
         }
@@ -192,7 +192,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         /// <param name="nocao">Is the newly added nocao.</param>
         public void AnalisaEAdicionaMapaDeReferenciaParaNovaSubEntrada(SubEntrada subEntrada)
         {
-            foreach (var mapaEntrada in VisualLALMapeamento.Instance.Entradas)
+            foreach (var mapaEntrada in VisualLALMapeamento.Instance.MapaEntradas)
             {
                 AnalisaEAdicionaMapaDeReferencia(mapaEntrada, subEntrada);
             }

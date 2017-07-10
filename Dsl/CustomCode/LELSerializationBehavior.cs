@@ -38,8 +38,8 @@ namespace Maxsys.VisualLAL
             if (!serializationResult.Failed)
             {
                 VisualLALMapeamento.Instance.SetStore(modelRoot.Store);
-                var entries = VisualLALMapeamento.Instance.Entradas;
-                var links = VisualLALMapeamento.Instance.Referencias;
+                var entries = VisualLALMapeamento.Instance.MapaEntradas;
+                var links = VisualLALMapeamento.Instance.MapaReferencias;
                 var simbolos = modelRoot.Simbolos;
                 var sinonimos = modelRoot.Simbolos.SelectMany(s => s.Sinonimos);
                 var nocoes = modelRoot.Simbolos.SelectMany(s => s.Nocoes);

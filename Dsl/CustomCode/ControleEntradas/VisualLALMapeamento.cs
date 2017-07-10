@@ -1,5 +1,6 @@
 ﻿using Maxsys.VisualLAL.CustomCode.Maps;
 using Microsoft.VisualStudio.Modeling;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Maxsys.VisualLAL.CustomCode
@@ -10,15 +11,21 @@ namespace Maxsys.VisualLAL.CustomCode
     public class VisualLALMapeamento
     {
         #region Properties
-        public MapeamentoReferencias Referencias { get; }
-        public MapeamentoEntradas Entradas { get; }
+        public MapeamentoReferencias MapaReferencias { get; }
+        public MapeamentoEntradas MapaEntradas { get; }
+        public HashSet<Entrada> Entradas { get; }
 
-        private Store Store { get; set; }
+        private Store Store { get; set; } = null;
 
         public void SetStore(Store store)
         {
-            Store = store;
-            Referencias.SetStore(store);
+            if (Store == null)
+            {
+                Store = store;
+                /*debug*/ System.Diagnostics.Debug.WriteLine($"VisualLALMapeamento.Store = [{Store.Id}]");
+                MapaReferencias.SetStore(store);
+            }
+            
         }
         #endregion
 
@@ -40,15 +47,16 @@ namespace Maxsys.VisualLAL.CustomCode
 
         private VisualLALMapeamento()
         {
-            Entradas = MapeamentoEntradas.Instance;
-            Referencias = MapeamentoReferencias.Instance;
+            MapaEntradas = MapeamentoEntradas.Instance;
+            MapaReferencias = MapeamentoReferencias.Instance;
+            Entradas = new HashSet<Entrada>();
 
-            Entradas.EntryMapAdded += EntryMapSet_Added;
-            Entradas.EntryMapUpdated += EntryMapSet_Updated;
-            Entradas.EntryMapRemoved += EntryMapSet_Removed;
+            MapaEntradas.EntryMapAdded += EntryMapSet_Added;
+            MapaEntradas.EntryMapUpdated += EntryMapSet_Updated;
+            MapaEntradas.EntryMapRemoved += EntryMapSet_Removed;
 
-            Referencias.LinkMapAdded += LinkMapSet_Added;
-            Referencias.LinkMapRemoved += LinkMapSet_Removed;
+            MapaReferencias.LinkMapAdded += LinkMapSet_Added;
+            MapaReferencias.LinkMapRemoved += LinkMapSet_Removed;
         }
         #endregion
 
@@ -58,20 +66,20 @@ namespace Maxsys.VisualLAL.CustomCode
         #region EntryMap
         private void EntryMapSet_Added(object source, MapaDeEntradaEventArgs e)
         {
-            //Debug.WriteLine($"WordSet_Added = [{e.MapaDeEntrada.EntradaUnica}]");
-            Referencias.AnalisaEAdicionaMapaDeReferenciaParaNovaEntrada(e.MapaDeEntrada);
+            /*debug*/System.Diagnostics.Debug.WriteLine($"WordSet_Added = [{e.MapaDeEntrada.EntradaUnica}]");
+            MapaReferencias.AnalisaEAdicionaMapaDeReferenciaParaNovaEntrada(e.MapaDeEntrada);
         }
 
         private void EntryMapSet_Updated(object source, MapaDeEntradaAtualizadoEventArgs e)
         {
-            //Debug.WriteLine($"WordMap_Updated = O[{e.MapaDeEntradaAntigo.EntradaUnica}] N[{e.MapaDeEntradaNovo.EntradaUnica}]");
-            Referencias.AtualizaMapaDeReferenciaAposAlteracaoDeEntrada(e.MapaDeEntradaAntigo, e.MapaDeEntradaNovo);
+            /*debug*/System.Diagnostics.Debug.WriteLine($"WordMap_Updated = O[{e.MapaDeEntradaAntigo.EntradaUnica}] N[{e.MapaDeEntradaNovo.EntradaUnica}]");
+            MapaReferencias.AtualizaMapaDeReferenciaAposAlteracaoDeEntrada(e.MapaDeEntradaAntigo, e.MapaDeEntradaNovo);
         }
 
         private void EntryMapSet_Removed(object source, MapaDeEntradaEventArgs e)
         {
-            //Debug.WriteLine($"WordMap_Removed = [{e.MapaDeEntrada.EntradaUnica}]");
-            Referencias.RemoveReferenciasDeEntrada(e.MapaDeEntrada);
+            /*debug*/System.Diagnostics.Debug.WriteLine($"WordMap_Removed = [{e.MapaDeEntrada.EntradaUnica}]");
+            MapaReferencias.RemoveReferenciasDeEntrada(e.MapaDeEntrada);
         }
         #endregion
         #region LinkMap
@@ -80,10 +88,9 @@ namespace Maxsys.VisualLAL.CustomCode
             var sourceSimbolo = Store.ElementDirectory.FindElement(e.SourceSimboloId) as Simbolo;
             var targetSimbolo = Store.ElementDirectory.FindElement(e.TargetSimboloId) as Simbolo;
 
-            //Debug.WriteLine($"LinkSet_Added = [{sourceSimbolo.Nome}] -> [{targetSimbolo.Nome}]");
-
+            /*debug*/System.Diagnostics.Debug.WriteLine($"LinkSet_Added = [{sourceSimbolo.Nome}] -> [{targetSimbolo.Nome}]");
             var sourceIsNotTarget = !sourceSimbolo.Id.Equals(targetSimbolo.Id);
-            var hasLinkMapBetweenSourceAndTarget = Referencias.HasLinkMap(sourceSimbolo, targetSimbolo);
+            var hasLinkMapBetweenSourceAndTarget = MapaReferencias.HasLinkMap(sourceSimbolo, targetSimbolo);
             var islinkedSourceToTarget = SimboloReferences.GetLinks(sourceSimbolo, targetSimbolo).Any();
             var islinkedTargetToSource = SimboloReferences.GetLinks(targetSimbolo, sourceSimbolo).Any();
             var isNotAlreadyLinked = !(islinkedSourceToTarget || islinkedTargetToSource);
@@ -100,7 +107,7 @@ namespace Maxsys.VisualLAL.CustomCode
 
         private void LinkMapSet_Removed(object source, LinkMapEventArgs e)
         {
-            //Debug.Write($"LinkSet_Removed");
+            /*debug*/System.Diagnostics.Debug.Write($"LinkSet_Removed");
             var sourceSimbolo = Store.ElementDirectory.FindElement(e.SourceSimboloId) as Simbolo;
             var targetSimbolo = Store.ElementDirectory.FindElement(e.TargetSimboloId) as Simbolo;
 
@@ -109,15 +116,15 @@ namespace Maxsys.VisualLAL.CustomCode
             if (sourceSimbolo == null || targetSimbolo == null)
                 return;
 
-            //Debug.Write($" = [{sourceSimbolo.Nome}] -> [{targetSimbolo.Nome}]");
+            /*debug*/System.Diagnostics.Debug.Write($" = [{sourceSimbolo.Nome}] -> [{targetSimbolo.Nome}]");
 
-            var stillHasLinkMap = Referencias.HasLinkMap(sourceSimbolo, targetSimbolo);
+            var stillHasLinkMap = MapaReferencias.HasLinkMap(sourceSimbolo, targetSimbolo);
             
             // If still has link maps between this two simbolos, 
             // means the Hyperlink must not be deleted.
             if (stillHasLinkMap)
             {
-                //Debug.WriteLine($" {{Ainda tem Link}}");
+                /*debug*/System.Diagnostics.Debug.WriteLine($" {{Ainda tem Link}}");
                 return;
             }
 
@@ -126,7 +133,7 @@ namespace Maxsys.VisualLAL.CustomCode
 
             var countLinks = sourceToTargetLinks.Count + targetToSourceLinks.Count;
 
-            //Debug.WriteLine($" {{SEM mais Links}}. Connectores removidos={countLinks}");
+            /*debug*/System.Diagnostics.Debug.WriteLine($" {{SEM mais Links}}. Connectores removidos={countLinks}");
 
             using (var transaction
                 = Store.TransactionManager.BeginTransaction("LinkMapSet_Removed"))
@@ -136,7 +143,7 @@ namespace Maxsys.VisualLAL.CustomCode
                 foreach (var link in targetToSourceLinks)
                     link.Delete();
 
-                //Debug.WriteLine($"LinkMapSet_Removed=[{countLinks}]");
+                /*debug*/System.Diagnostics.Debug.WriteLine($"LinkMapSet_Removed=[{countLinks}]");
                 transaction.Commit();
             }
         }

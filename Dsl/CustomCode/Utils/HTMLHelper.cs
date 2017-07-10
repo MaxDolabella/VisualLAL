@@ -14,12 +14,23 @@ namespace Maxsys.VisualLAL.CustomCode.Utils
             var raizLAL = $@"{documentos}\VisualLAL\{dominio.Nome}";
             var raizLALEntradas = $@"{raizLAL}\Entradas";
 
+            #region Diretórios
             if (Directory.Exists(raizLALEntradas))
-                Directory.Delete(raizLALEntradas, true);
+            {
+                var dirInfo = new DirectoryInfo(raizLALEntradas);
+                foreach (var fileInfo in dirInfo.GetFiles())
+                    fileInfo.Delete();
+            }
 
             if (Directory.Exists(raizLAL))
-                Directory.Delete(raizLAL, true);
-            Directory.CreateDirectory($@"{raizLAL}\Entradas");
+            {
+                var dirInfo = new DirectoryInfo(raizLAL);
+                foreach (var fileInfo in dirInfo.GetFiles())
+                    fileInfo.Delete();
+            }
+
+            Directory.CreateDirectory(raizLALEntradas);
+            #endregion
 
             var simbolos = dominio.Simbolos;
 
@@ -90,7 +101,7 @@ namespace Maxsys.VisualLAL.CustomCode.Utils
             foreach (var nocao in simbolo.Nocoes)
             {
                 var text = nocao.Texto;
-                var references = VisualLALMapeamento.Instance.Referencias
+                var references = VisualLALMapeamento.Instance.MapaReferencias
                     .Where(m => m.SubEntradaOrigemId.Equals(nocao.Id))
                     .Select(x => new { Entry = x.EntradaReferenciada, TargetSimboloId = x.SimboloDestinoId });
 
@@ -110,7 +121,7 @@ namespace Maxsys.VisualLAL.CustomCode.Utils
             foreach (var impacto in simbolo.Impactos)
             {
                 var text = impacto.Texto;
-                var references = VisualLALMapeamento.Instance.Referencias
+                var references = VisualLALMapeamento.Instance.MapaReferencias
                     .Where(m => m.SubEntradaOrigemId.Equals(impacto.Id))
                     .Select(x => new { Entry = x.EntradaReferenciada, TargetSimboloId = x.SimboloDestinoId });
 

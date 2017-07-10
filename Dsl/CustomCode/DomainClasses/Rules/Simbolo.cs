@@ -13,7 +13,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var simbolo = e.ModelElement as Simbolo;
             var simboloName = simbolo.Nome;
-            var mapaEntradas = VisualLALMapeamento.Instance.Entradas;
+            var mapaEntradas = VisualLALMapeamento.Instance.MapaEntradas;
 
             while (mapaEntradas.Contains(simboloName))
                 simboloName += "1";
@@ -33,7 +33,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
             var simbolo = e.ModelElement as Simbolo;
-            var mapaEntradas = VisualLALMapeamento.Instance.Entradas;
+            var mapaEntradas = VisualLALMapeamento.Instance.MapaEntradas;
             var oldValue = e.OldValue as string;
             var newValue = e.NewValue as string;
 
@@ -81,7 +81,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
             var simbolo = e.ModelElement as Simbolo;
-            VisualLALMapeamento.Instance.Entradas.Remove(simbolo);
+            VisualLALMapeamento.Instance.MapaEntradas.Remove(simbolo);
         }
     }
 }

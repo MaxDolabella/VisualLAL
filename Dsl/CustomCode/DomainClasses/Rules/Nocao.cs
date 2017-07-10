@@ -11,7 +11,8 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
             var nocao = e.ModelElement as Nocao;
-            VisualLALMapeamento.Instance.Referencias.AnalisaEAdicionaMapaDeReferenciaParaNovaSubEntrada(nocao);
+            VisualLALMapeamento.Instance.MapaReferencias.AnalisaEAdicionaMapaDeReferenciaParaNovaSubEntrada(nocao);
+            /*debug*/System.Diagnostics.Debug.WriteLine($"NocaoAddRule[{nocao.Texto}]");
         }
     }
 
@@ -24,9 +25,10 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             base.ElementPropertyChanged(e);
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
-            var nocao = e.ModelElement as Nocao;
 
-            VisualLALMapeamento.Instance.Referencias.AtualizaMapaDeReferenciaAposAlteracaoDeSubEntrada(nocao);
+            var nocao = e.ModelElement as Nocao;
+            VisualLALMapeamento.Instance.MapaReferencias.AtualizaMapaDeReferenciaAposAlteracaoDeSubEntrada(nocao);
+            /*debug*/System.Diagnostics.Debug.WriteLine($"NocaoChangeRule[{nocao.Texto}]");
         }
     }
 
@@ -41,7 +43,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var nocao = e.ModelElement as Nocao;
 
-            VisualLALMapeamento.Instance.Referencias.RemoverReferenciasDeSubEntrada(nocao);
+            VisualLALMapeamento.Instance.MapaReferencias.RemoverReferenciasDeSubEntrada(nocao);
         }
     }
 }

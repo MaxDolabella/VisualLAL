@@ -7,7 +7,6 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
     /// <summary>
     /// Represents a set of WordMap thats contains all uniques entries of LEL
     /// </summary>
-    [Serializable]
     public class MapeamentoEntradas : SortedSet<MapaDeEntrada>, IEnumerable<MapaDeEntrada>
     {
         #region Singleton
@@ -108,21 +107,14 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         }
         public void UpdateEntry(Entrada entrada)
         {
-            if (!Contains(entrada.Nome))
-            {
-                var mapaAntigo = this[entrada.Id];
-                var mapaNovo = new MapaDeEntrada(entrada);
+            var mapaAntigo = this[entrada.Id];
+            var mapaNovo = new MapaDeEntrada(entrada);
 
-                Remove(mapaAntigo);
+            Remove(mapaAntigo);
 
-                var adicionado = Add(mapaNovo);
-                if (adicionado)
-                    OnEntryMapUpdated(mapaAntigo, mapaNovo);
-            }
-            else
-            {
-                //throw new ArgumentException($"mapaEntradaset.UpdateEntry: There is no WordMap with value {{{oldEntry}}}");
-            }
+            var adicionado = Add(mapaNovo);
+            if (adicionado)
+                OnEntryMapUpdated(mapaAntigo, mapaNovo);
         }
         
 
@@ -168,6 +160,4 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         #endregion
 
     }
-
-    
 }
