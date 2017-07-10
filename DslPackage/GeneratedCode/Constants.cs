@@ -18,7 +18,7 @@ namespace Maxsys.VisualLAL
 		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
 		public const string CompanyName = @"Maxsys";
 		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-		public const string ProductVersion = "1.0.0.0";
+		public const string ProductVersion = "1.0.1.0";
 
 		// Menu definitions
 		public static readonly global::System.ComponentModel.Design.CommandID VisualLALDiagramMenu = new global::System.ComponentModel.Design.CommandID(new global::System.Guid(VisualLALCommandSetId), 0x10000);

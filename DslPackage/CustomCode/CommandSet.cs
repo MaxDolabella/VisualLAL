@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.Modeling;
+﻿using Maxsys.VisualLAL.CustomCode.Utils;
+using Microsoft.VisualStudio.Modeling.Diagrams;
 using Microsoft.VisualStudio.Modeling.Shell;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace Maxsys.VisualLAL
 {
@@ -12,9 +12,15 @@ namespace Maxsys.VisualLAL
     {
         private Guid guidDiagramToolsMenuCmdSet = new Guid("9BE22312-4F7D-48BB-A5CB-2F0FA41597BB");
         private const int grpidDiagramToolsMenuGroup = 0x01001;
-        private const int cmdidCollapseAllContextMenuCommand = 1;
-        private const int cmdidExpandAllContextMenuCommand = 2;
-        private const int cmdidAlignSymbolsContextMenuCommand = 3;
+        private const int grpidSymbolToolsMenuGroup = 0x01002;
+
+        private const int cmdidCollapseAllContextMenuCommand = 0x00001;
+        private const int cmdidExpandAllContextMenuCommand = 0x00002;
+        private const int cmdidAlignSymbolsContextMenuCommand = 0x00003;
+
+        private const int cmdidFitSymbolsToContentContextMenuCommand = 0x00004;
+        private const int cmdidFitSymbolsToDefaultContextMenuCommand = 0x00005;
+
         protected override IList<MenuCommand> GetMenuCommands()
         {
             // Get the list of generated commands.  
@@ -43,10 +49,26 @@ namespace Maxsys.VisualLAL
                 new EventHandler(OnMenuAlignSymbolsContextMenuCommand),
                 new CommandID(guidDiagramToolsMenuCmdSet, cmdidAlignSymbolsContextMenuCommand));
             commands.Add(alignSymbolsContextMenuCommand);
-            // Add more commands here.  
+
+            // FitSymbolsToContent command:  
+            DynamicStatusMenuCommand fitSymbolsToContentContextMenuCommand =
+              new DynamicStatusMenuCommand(
+                new EventHandler(OnStatusFitSymbolsToContentContextMenuCommand),
+                new EventHandler(OnMenuFitSymbolsToContentContextMenuCommand),
+                new CommandID(guidDiagramToolsMenuCmdSet, cmdidFitSymbolsToContentContextMenuCommand));
+            commands.Add(fitSymbolsToContentContextMenuCommand);
+
+            // FitSymbolsToDefault command:  
+            DynamicStatusMenuCommand fitSymbolsToDefaultContextMenuCommand =
+              new DynamicStatusMenuCommand(
+                new EventHandler(OnStatusFitSymbolsToDefaultContextMenuCommand),
+                new EventHandler(OnMenuFitSymbolsToDefaultContextMenuCommand),
+                new CommandID(guidDiagramToolsMenuCmdSet, cmdidFitSymbolsToDefaultContextMenuCommand));
+            commands.Add(fitSymbolsToDefaultContextMenuCommand);
             return commands;
         }
 
+        
 
         #region CollapseAll
         // WHEN TO SHOW
@@ -137,6 +159,82 @@ namespace Maxsys.VisualLAL
                     System.Windows.Forms
                         .MessageBox.Show("Não foi possível alinhar os Símbolos. Desculpe por isso :("
                         , "FALHA AO ALINHAR"
+                        , System.Windows.Forms.MessageBoxButtons.OK
+                        , System.Windows.Forms.MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+
+        #region FitToContent
+        private void OnStatusFitSymbolsToContentContextMenuCommand(object sender, EventArgs e)
+        {
+            var command = sender as MenuCommand;
+            var root = this.CurrentVisualLALDocData.RootElement as LALDominio;
+            command.Visible = command.Enabled = (root?.Simbolos.Count > 0);
+        }
+
+        private void OnMenuFitSymbolsToContentContextMenuCommand(object sender, EventArgs e)
+        {
+            var command = sender as MenuCommand;
+            var store = this.CurrentDocData.Store;
+            var simbolos = store.ElementDirectory.FindElements<Simbolo>();
+            if (simbolos.Count == 0)
+                return;
+
+            using (var transaction = store.TransactionManager.BeginTransaction("AjustarAoConteudo"))
+            {
+                try
+                {
+                    foreach (var simbolo in simbolos)
+                        CompartmentHelper.AjustarAoConteudo(simbolo);
+
+                    transaction.Commit(); // Don't forget this!  
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    System.Windows.Forms
+                        .MessageBox.Show("Não foi possível ajustar o tamanho dos Símbolos. Desculpe por isso :("
+                        , "FALHA AO AJUSTAR TAMANHO"
+                        , System.Windows.Forms.MessageBoxButtons.OK
+                        , System.Windows.Forms.MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+
+        #region FitToDefault
+        private void OnStatusFitSymbolsToDefaultContextMenuCommand(object sender, EventArgs e)
+        {
+            var command = sender as MenuCommand;
+            var root = this.CurrentVisualLALDocData.RootElement as LALDominio;
+            command.Visible = command.Enabled = (root?.Simbolos.Count > 0);
+        }
+
+        private void OnMenuFitSymbolsToDefaultContextMenuCommand(object sender, EventArgs e)
+        {
+            var command = sender as MenuCommand;
+            var store = this.CurrentDocData.Store;
+            var simbolos = store.ElementDirectory.FindElements<Simbolo>();
+            if (simbolos.Count == 0)
+                return;
+
+            using (var transaction = store.TransactionManager.BeginTransaction("AjustarAoPadrao"))
+            {
+                try
+                {
+                    foreach (var simbolo in simbolos)
+                        CompartmentHelper.AjustarAoPadrao(simbolo);
+
+                    transaction.Commit(); // Don't forget this!  
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    System.Windows.Forms
+                        .MessageBox.Show("Não foi possível ajustar o tamanho dos Símbolos. Desculpe por isso :("
+                        , "FALHA AO AJUSTAR TAMANHO"
                         , System.Windows.Forms.MessageBoxButtons.OK
                         , System.Windows.Forms.MessageBoxIcon.Error);
                 }

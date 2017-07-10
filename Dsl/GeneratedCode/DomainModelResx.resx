@@ -190,7 +190,7 @@
     <comment>DisplayName for DomainClass &apos;SubEntrada&apos;</comment>
   </data>
   <data name="Maxsys.VisualLAL.SubEntrada/Texto.Description" xml:space="preserve">
-    <value>Description for Maxsys.VisualLAL.SubEntrada.Texto</value>
+    <value>Texto da Noção/Impacto</value>
     <comment>Description for DomainProperty &apos;Texto&apos; on DomainClass &apos;SubEntrada&apos;</comment>
   </data>
   <data name="Maxsys.VisualLAL.SubEntrada/Texto.DisplayName" xml:space="preserve">

@@ -139,26 +139,30 @@ namespace Maxsys.VisualLAL
                 try
                 {
                     HTMLHelper.ExportarHTMLVisualLAL(modelRoot);
+                    var caminho = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\VisualLAL\{modelRoot.Nome}";
+
+                    MessageBox.Show(this
+                    , $"HTML exportado com sucesso para:\r\n\"{caminho}\""
+                    , "EXPORTAR HTML"
+                    , MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 catch (Exception ex)
                 {
 
                     MessageBox.Show(this
-                    , $"Invalid Model. The HTML cannot be exported:\r\n{ex.Message}"
-                    , "EXPORT HTML HAS FAILED."
+                    , $"Não foi possível exportar HTML:\r\n{ex.Message}"
+                    , "EXPORTAR HTML FALHOU."
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
-                MessageBox.Show(this
-                    , "HTML successfully exported."
-                    , "EXPORT HTML"
-                    , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             else
             {
                 MessageBox.Show(this
-                    , "Invalid Model. The HTML cannot be exported."
-                    , "EXPORT HTML HAS FAILED."
+                    , "Não foi possível exportar HTML. Verifique se o modelo é válido."
+                    , "MODELO INVÁLIDO."
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

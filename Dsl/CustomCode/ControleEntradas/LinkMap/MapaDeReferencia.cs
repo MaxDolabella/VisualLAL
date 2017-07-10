@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.Modeling;
-using System;
+﻿using System;
 
 namespace Maxsys.VisualLAL.CustomCode.Maps
 {

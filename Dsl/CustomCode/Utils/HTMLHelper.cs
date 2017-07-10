@@ -1,14 +1,8 @@
-﻿using Microsoft.VisualStudio.Modeling;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.IO;
-using System.Diagnostics;
-using System.Web;
 
 namespace Maxsys.VisualLAL.CustomCode.Utils
 {
@@ -96,7 +90,7 @@ namespace Maxsys.VisualLAL.CustomCode.Utils
             foreach (var nocao in simbolo.Nocoes)
             {
                 var text = nocao.Texto;
-                var references = LELMaps.Instance.LinkMaps
+                var references = VisualLALMapeamento.Instance.Referencias
                     .Where(m => m.SubEntradaOrigemId.Equals(nocao.Id))
                     .Select(x => new { Entry = x.EntradaReferenciada, TargetSimboloId = x.SimboloDestinoId });
 
@@ -116,7 +110,7 @@ namespace Maxsys.VisualLAL.CustomCode.Utils
             foreach (var impacto in simbolo.Impactos)
             {
                 var text = impacto.Texto;
-                var references = LELMaps.Instance.LinkMaps
+                var references = VisualLALMapeamento.Instance.Referencias
                     .Where(m => m.SubEntradaOrigemId.Equals(impacto.Id))
                     .Select(x => new { Entry = x.EntradaReferenciada, TargetSimboloId = x.SimboloDestinoId });
 

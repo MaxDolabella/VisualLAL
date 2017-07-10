@@ -12,7 +12,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var impacto = e.ModelElement as Impacto;
 
-            LELMaps.Instance.LinkMaps.AnalisaEAdicionaMapaDeReferenciaParaNovaSubEntrada(impacto);
+            VisualLALMapeamento.Instance.Referencias.AnalisaEAdicionaMapaDeReferenciaParaNovaSubEntrada(impacto);
         }
     }
 
@@ -27,7 +27,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var impacto = e.ModelElement as Impacto;
 
-            LELMaps.Instance.LinkMaps.AtualizaMapaDeReferenciaAposAlteracaoDeSubEntrada(impacto);
+            VisualLALMapeamento.Instance.Referencias.AtualizaMapaDeReferenciaAposAlteracaoDeSubEntrada(impacto);
         }
     }
 
@@ -42,7 +42,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var impacto = e.ModelElement as Impacto;
 
-            LELMaps.Instance.LinkMaps.RemoverReferenciasDeSubEntrada(impacto);
+            VisualLALMapeamento.Instance.Referencias.RemoverReferenciasDeSubEntrada(impacto);
         }
     }
 }

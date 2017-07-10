@@ -81,6 +81,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializationHelper.cs</LastGenOutput>
     </None>
+    <Compile Include="CustomCode\Utils\CompartmentHelper.cs" />
     <Compile Include="CustomCode\Utils\DisplayText.cs" />
     <Compile Include="CustomCode\DomainClasses\Specification\ImpactoSpecification\TextoNaoPodeSerVazioSpecification.cs" />
     <Compile Include="CustomCode\DomainClasses\Specification\ImpactoSpecification\TextoDeveSerUnicoEmSeuSimboloSpecification.cs" />
@@ -105,7 +106,7 @@
     <Compile Include="CustomCode\ControleEntradas\EntryMap\EntryMapSet.cs" />
     <Compile Include="CustomCode\ControleEntradas\EntryMap\EventArgs\MapaDeEntradaEventArgs.cs" />
     <Compile Include="CustomCode\ControleEntradas\EntryMap\EventArgs\MapaDeEntradaAtualizadoEventArgs.cs" />
-    <Compile Include="CustomCode\ControleEntradas\LELMaps.cs" />
+    <Compile Include="CustomCode\ControleEntradas\VisualLALMapeamento.cs" />
     <Compile Include="CustomCode\ControleEntradas\LinkMap\EventArgs\LinkMapEventArgs.cs" />
     <Compile Include="CustomCode\ControleEntradas\LinkMap\MapaDeReferencia.cs" />
     <Compile Include="CustomCode\ControleEntradas\LinkMap\LinkMapSet.cs" />

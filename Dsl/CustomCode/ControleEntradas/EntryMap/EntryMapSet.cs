@@ -1,7 +1,5 @@
-﻿using Microsoft.VisualStudio.Modeling;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Maxsys.VisualLAL.CustomCode.Maps
@@ -10,24 +8,24 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
     /// Represents a set of WordMap thats contains all uniques entries of LEL
     /// </summary>
     [Serializable]
-    public class EntryMapSet : SortedSet<MapaDeEntrada>, IEnumerable<MapaDeEntrada>
+    public class MapeamentoEntradas : SortedSet<MapaDeEntrada>, IEnumerable<MapaDeEntrada>
     {
         #region Singleton
-        private static EntryMapSet _instance;
-        public static EntryMapSet Instance
+        private static MapeamentoEntradas _instance;
+        public static MapeamentoEntradas Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new EntryMapSet();
+                    _instance = new MapeamentoEntradas();
                 }
 
                 return _instance;
             }
         }
 
-        private EntryMapSet()
+        private MapeamentoEntradas()
         { }
         #endregion
 

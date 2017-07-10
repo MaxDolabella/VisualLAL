@@ -1,7 +1,6 @@
 ﻿using Maxsys.VisualLAL.CustomCode;
 using Microsoft.VisualStudio.Modeling;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Maxsys.VisualLAL
@@ -37,7 +36,7 @@ namespace Maxsys.VisualLAL
 
             #region Store event handler registration
             var store = this.DocData.Store;
-            LELMaps.Instance.SetStore(store);
+            VisualLALMapeamento.Instance.SetStore(store);
 
             // Store events are added to the various properties of the EMD:
             var emd = store.EventManagerDirectory;

@@ -1,11 +1,7 @@
 ﻿using Maxsys.VisualLAL.CustomCode;
 using Microsoft.VisualStudio.Modeling;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Maxsys.VisualLAL
 {
@@ -20,7 +16,7 @@ namespace Maxsys.VisualLAL
         /// <param name="modelRoot">The root of the file that was loaded.</param>
         private void OnPostLoadModel(SerializationResult serializationResult, Partition partition, string fileName, LALDominio modelRoot)
         {
-            Debug.WriteLine("OnPostLoad");
+            //Debug.WriteLine("OnPostLoad");
         }
 
         // Fire PostLoad customization code whether Load succeeded or not
@@ -38,12 +34,12 @@ namespace Maxsys.VisualLAL
         /// <param name="diagram">The diagram matching the modelRoot.</param>
         private void OnPostLoadModelAndDiagram(SerializationResult serializationResult, Partition modelPartition, string modelFileName, Partition diagramPartition, string diagramFileName, LALDominio modelRoot, VisualLALDiagram diagram)
         {
-            Debug.WriteLine("OnPostLoadModelAndDiagram");
+            //Debug.WriteLine("OnPostLoadModelAndDiagram");
             if (!serializationResult.Failed)
             {
-                LELMaps.Instance.SetStore(modelRoot.Store);
-                var entries = LELMaps.Instance.Entries;
-                var links = LELMaps.Instance.LinkMaps;
+                VisualLALMapeamento.Instance.SetStore(modelRoot.Store);
+                var entries = VisualLALMapeamento.Instance.Entradas;
+                var links = VisualLALMapeamento.Instance.Referencias;
                 var simbolos = modelRoot.Simbolos;
                 var sinonimos = modelRoot.Simbolos.SelectMany(s => s.Sinonimos);
                 var nocoes = modelRoot.Simbolos.SelectMany(s => s.Nocoes);

@@ -249,7 +249,11 @@
           </xsd:annotation>
         </xsd:attribute>
         <!-- Property: Texto -->
-        <xsd:attribute name="texto" type="xsd:string" />
+        <xsd:attribute name="texto" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Texto da Noção/Impacto</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

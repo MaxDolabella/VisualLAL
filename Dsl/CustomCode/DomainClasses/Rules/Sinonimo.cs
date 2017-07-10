@@ -16,7 +16,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             var simboloName = sinonimo.Simbolo.Nome;
             var simboloSinonimosCont = (sinonimo.Simbolo.Sinonimos.Count).ToString();
             var sinonimoNome = $"{simboloName}Sinônimo{simboloSinonimosCont}";
-            var mapaEntradas = LELMaps.Instance.Entries;
+            var mapaEntradas = VisualLALMapeamento.Instance.Entradas;
 
             while (mapaEntradas.Contains(sinonimoNome))
                 sinonimoNome += "1";
@@ -37,7 +37,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var sinonimo = e.ModelElement as Sinonimo;
 
-            var mapaEntradas = LELMaps.Instance.Entries;
+            var mapaEntradas = VisualLALMapeamento.Instance.Entradas;
             var oldValue = e.OldValue as string;
             var newValue = e.NewValue as string;
 
@@ -85,7 +85,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
             var sinonimo = e.ModelElement as Sinonimo;
-            var mapaEntradas = LELMaps.Instance.Entries;
+            var mapaEntradas = VisualLALMapeamento.Instance.Entradas;
             mapaEntradas.Remove(sinonimo);
         }
     }

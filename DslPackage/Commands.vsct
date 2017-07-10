@@ -18,13 +18,15 @@
     <!-- Define a group - a section in the menu -->
     <Groups>
       <Group guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup" priority="0x0100">
-        <!-- These symbols are defined in GeneratedVSCT.vsct -->
         <Parent guid="guidCmdSet" id="menuidContext" />
       </Group>
-
     </Groups>
+    
+    
     <!-- Define a button - a menu item - inside the Group -->
     <Buttons>
+      
+      <!--DiagramToolsMenu-->
       <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidCollapseAllContextMenuCommand"
         priority="0x0100" type="Button">
         <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
@@ -33,27 +35,47 @@
          These symbols are defined in GeneratedVSCT.vsct -->
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Collapse All Symbols</ButtonText>
+          <ButtonText>Recolher Tudo</ButtonText>
         </Strings>
       </Button>
 
       <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidExpandAllContextMenuCommand"
-        priority="0x0100" type="Button">
+        priority="0x0101" type="Button">
         <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Expand All Symbols</ButtonText>
+          <ButtonText>Expandir Tudo</ButtonText>
         </Strings>
       </Button>
 
       <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidAlignSymbolsContextMenuCommand"
-        priority="0x0100" type="Button">
+        priority="0x0102" type="Button">
         <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Align Symbols</ButtonText>
+          <ButtonText>Alinhar Símbolos</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidFitSymbolsToContentContextMenuCommand"
+        priority="0x0103" type="Button">
+        <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Ajustar ao tamanho do texto</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidDiagramToolsMenuCmdSet" id="cmdidFitSymbolsToDefaultContextMenuCommand"
+        priority="0x0104" type="Button">
+        <Parent guid="guidDiagramToolsMenuCmdSet" id="grpidDiagramToolsMenuGroup"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Ajustar ao tamanho padrão</ButtonText>
+        </Strings>
+      </Button>
+      
+      
     </Buttons>
 
   </Commands>
@@ -76,9 +98,13 @@
     <GuidSymbol name="guidDiagramToolsMenuCmdSet"
       value="{9BE22312-4F7D-48BB-A5CB-2F0FA41597BB}" >
       <IDSymbol name="grpidDiagramToolsMenuGroup" value="0x01001"/>
+      
       <IDSymbol name="cmdidCollapseAllContextMenuCommand" value="0x00001"/>
       <IDSymbol name="cmdidExpandAllContextMenuCommand" value="0x00002"/>
       <IDSymbol name="cmdidAlignSymbolsContextMenuCommand" value="0x00003"/>
+
+      <IDSymbol name="cmdidFitSymbolsToContentContextMenuCommand" value="0x00004"/>
+      <IDSymbol name="cmdidFitSymbolsToDefaultContextMenuCommand" value="0x00005"/>
     </GuidSymbol>
   </Symbols>
 

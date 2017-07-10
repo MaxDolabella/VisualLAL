@@ -845,16 +845,16 @@ namespace Maxsys.VisualLAL
 		/// <summary>
 		/// Storage for Texto
 		/// </summary>
-		private global::System.String textoPropertyStorage = "Texo_Aqui";
+		private global::System.String textoPropertyStorage = "Texto_Aqui";
 		
 		/// <summary>
 		/// Gets or sets the value of Texto domain property.
-		/// Description for Maxsys.VisualLAL.SubEntrada.Texto
+		/// Texto da Noção/Impacto
 		/// </summary>
 		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.SubEntrada/Texto.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Maxsys.VisualLAL.SubEntrada/Texto.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
-		[global::System.ComponentModel.DefaultValue("Texo_Aqui")]
+		[global::System.ComponentModel.DefaultValue("Texto_Aqui")]
 		[DslModeling::DomainObjectId("b6e929b1-3aec-484c-a2c2-14c65e02983b")]
 		public global::System.String Texto
 		{

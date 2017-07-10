@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.Modeling;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Maxsys.VisualLAL.CustomCode.Maps
 {
@@ -193,7 +192,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         /// <param name="nocao">Is the newly added nocao.</param>
         public void AnalisaEAdicionaMapaDeReferenciaParaNovaSubEntrada(SubEntrada subEntrada)
         {
-            foreach (var mapaEntrada in LELMaps.Instance.Entries)
+            foreach (var mapaEntrada in VisualLALMapeamento.Instance.Entradas)
             {
                 AnalisaEAdicionaMapaDeReferencia(mapaEntrada, subEntrada);
             }

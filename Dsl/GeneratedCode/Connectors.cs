@@ -110,7 +110,7 @@ namespace Maxsys.VisualLAL
 			DslDiagrams::PenSettings linePen = new DslDiagrams::PenSettings();
 			linePen.Color = global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.Silver);
 			classStyleSet.OverridePen(DslDiagrams::DiagramPens.ConnectionLineDecorator, linePen);
-			linePen.Width = 0.0125f;
+			linePen.Width = 0.02f;
 			classStyleSet.OverridePen(DslDiagrams::DiagramPens.ConnectionLine, linePen);
 			DslDiagrams::BrushSettings lineBrush = new DslDiagrams::BrushSettings();
 			lineBrush.Color = global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.Silver);

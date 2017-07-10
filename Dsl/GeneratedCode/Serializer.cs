@@ -3301,7 +3301,7 @@ namespace Maxsys.VisualLAL
 				global::System.String propValue = instanceOfSubEntrada.Texto;
 				if (!serializationContext.Result.Failed)
 				{
-					if (propValue != null && (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(propValue, "Texo_Aqui") != 0))
+					if (propValue != null && (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(propValue, "Texto_Aqui") != 0))
 					{	// No need to write the value out if it's the same as default value.
 						VisualLALSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "texto", propValue);
 					}
