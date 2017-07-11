@@ -497,6 +497,93 @@ namespace Maxsys.VisualLAL
 		{
 		}
 		#endregion
+		#region Tipo domain property code
+		
+		/// <summary>
+		/// Tipo domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TipoDomainPropertyId = new global::System.Guid(0xdf99a777, 0x1a1b, 0x4822, 0xa4, 0x09, 0xf4, 0x88, 0xb3, 0x33, 0xa3, 0xe8);
+		
+		/// <summary>
+		/// Storage for Tipo
+		/// </summary>
+		private TipoSimbolo tipoPropertyStorage;
+		
+		/// <summary>
+		/// Gets or sets the value of Tipo domain property.
+		/// A tipo do símbolo.
+		/// </summary>
+		[DslDesign::DisplayNameResource("Maxsys.VisualLAL.Simbolo/Tipo.DisplayName", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.Simbolo/Tipo.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("df99a777-1a1b-4822-a409-f488b333a3e8")]
+		public TipoSimbolo Tipo
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return tipoPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				TipoPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Simbolo.Tipo domain property.
+		/// </summary>
+		internal sealed partial class TipoPropertyHandler : DslModeling::DomainPropertyValueHandler<Simbolo, TipoSimbolo>
+		{
+			private TipoPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Simbolo.Tipo domain property value handler.
+			/// </summary>
+			public static readonly TipoPropertyHandler Instance = new TipoPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Simbolo.Tipo domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TipoDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed TipoSimbolo GetValue(Simbolo element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.tipoPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Simbolo element, TipoSimbolo newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				TipoSimbolo oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.tipoPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
 		#region Nocoes opposite domain role accessor
 		
 		/// <summary>

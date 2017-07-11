@@ -83,7 +83,7 @@
     </None>
     <Compile Include="CustomCode\PrincipioDaCircularidade\Specification\WarningLevelSpecification\CadaSimboloDeveSerReferenciadoPorOutroSimboloSpecification.cs" />
     <Compile Include="CustomCode\PrincipioDaCircularidade\Specification\WarningLevelSpecification\CadaSimboloDeveReferenciarOutroSimboloSpecification.cs" />
-    <Compile Include="CustomCode\PrincipioDaCircularidade\Validation\PrincipioDaCircularidadeErrorLevelValidator - Copy.cs" />
+    <Compile Include="CustomCode\PrincipioDaCircularidade\Validation\PrincipioDaCircularidadeWarningLevelValidator.cs" />
     <Compile Include="CustomCode\Utils\CompartmentHelper.cs" />
     <Compile Include="CustomCode\Utils\DisplayText.cs" />
     <Compile Include="CustomCode\DomainClasses\Specification\ImpactoSpecification\TextoNaoPodeSerVazioSpecification.cs" />

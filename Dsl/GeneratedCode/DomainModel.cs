@@ -103,6 +103,7 @@ namespace Maxsys.VisualLAL
 				new DomainMemberInfo(typeof(LALDominio), "Nome", LALDominio.NomeDomainPropertyId, typeof(LALDominio.NomePropertyHandler)),
 				new DomainMemberInfo(typeof(LALDominio), "Descricao", LALDominio.DescricaoDomainPropertyId, typeof(LALDominio.DescricaoPropertyHandler)),
 				new DomainMemberInfo(typeof(Entrada), "Nome", Entrada.NomeDomainPropertyId, typeof(Entrada.NomePropertyHandler)),
+				new DomainMemberInfo(typeof(Simbolo), "Tipo", Simbolo.TipoDomainPropertyId, typeof(Simbolo.TipoPropertyHandler)),
 				new DomainMemberInfo(typeof(SubEntrada), "Texto", SubEntrada.TextoDomainPropertyId, typeof(SubEntrada.TextoPropertyHandler)),
 			};
 		}
@@ -477,5 +478,46 @@ namespace Maxsys.VisualLAL
 	}
 	#endregion
 		
+}
+namespace Maxsys.VisualLAL
+{
+	/// <summary>
+	/// DomainEnumeration: TipoSimbolo
+	/// Description for Maxsys.VisualLAL.TipoSimbolo
+	/// </summary>
+	[global::System.CLSCompliant(true)]
+	public enum TipoSimbolo
+	{
+		/// <summary>
+		/// NãoClassificado
+		/// Símbolo ainda não classificado.
+		/// </summary>
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.TipoSimbolo/NãoClassificado.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		NãoClassificado = 0,
+		/// <summary>
+		/// Sujeito
+		/// Indica que o símbolo é um sujeito.
+		/// </summary>
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.TipoSimbolo/Sujeito.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		Sujeito = 1,
+		/// <summary>
+		/// Verbo
+		/// Description for Maxsys.VisualLAL.TipoSimbolo.Verbo
+		/// </summary>
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.TipoSimbolo/Verbo.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		Verbo = 2,
+		/// <summary>
+		/// Objeto
+		/// Description for Maxsys.VisualLAL.TipoSimbolo.Objeto
+		/// </summary>
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.TipoSimbolo/Objeto.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		Objeto = 3,
+		/// <summary>
+		/// Estado
+		/// Description for Maxsys.VisualLAL.TipoSimbolo.Estado
+		/// </summary>
+		[DslDesign::DescriptionResource("Maxsys.VisualLAL.TipoSimbolo/Estado.Description", typeof(global::Maxsys.VisualLAL.VisualLALDomainModel), "Maxsys.VisualLAL.GeneratedCode.DomainModelResx")]
+		Estado = 4,
+	}
 }
 

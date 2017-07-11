@@ -32,6 +32,10 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             base.ElementPropertyChanged(e);
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
+
+            if (e.DomainProperty.Name == "Tipo")
+                return;
+
             var simbolo = e.ModelElement as Simbolo;
             var mapaEntradas = VisualLALMapeamento.Instance.MapaEntradas;
             var oldValue = e.OldValue as string;

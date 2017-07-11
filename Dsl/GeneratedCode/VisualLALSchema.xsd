@@ -188,6 +188,12 @@
             <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <!-- Property: Tipo -->
+        <xsd:attribute name="tipo" type="TipoSimbolo" >
+          <xsd:annotation>
+            <xsd:documentation>A tipo do símbolo.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -546,6 +552,43 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  
+  <!-- Enum TipoSimbolo -->
+  <xsd:simpleType name="TipoSimbolo">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NãoClassificado">
+        <xsd:annotation>
+          <xsd:documentation>Símbolo ainda não classificado.</xsd:documentation>
+          <xsd:documentation>O símbolo precisa ser classificado em Sujeito, Verbo, Objeto ou Estado</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Sujeito">
+        <xsd:annotation>
+          <xsd:documentation>Indica que o símbolo é um sujeito.</xsd:documentation>
+          <xsd:documentation>Noção: Quem é o sujeito. 
+Impacto: Quais ações executa.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Verbo">
+        <xsd:annotation>
+          <xsd:documentation>Noção: Quem realiza, quando acontece e quais os procedimentos envolvidos.
+Impacto: Quais os reflexos da ação no ambiente (outras ações que devem ocorrer) e quais os novos estados decorrentes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Objeto">
+        <xsd:annotation>
+          <xsd:documentation>Noção: Definir o objeto e identificar outros objetos com os quais se relaciona.
+Impacto: Ações que podem ser aplicadas ao objeto.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Estado">
+        <xsd:annotation>
+          <xsd:documentation>Noção: O que significa e quais ações levaram a esse estado.
+Impacto: Identificar outros estados e ações que podem ocorrer a partir do estado que se descreve.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
   
 </xsd:schema>
 

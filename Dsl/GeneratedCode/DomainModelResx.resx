@@ -173,6 +173,14 @@
     <value>Símbolo</value>
     <comment>DisplayName for DomainClass &apos;Simbolo&apos;</comment>
   </data>
+  <data name="Maxsys.VisualLAL.Simbolo/Tipo.Description" xml:space="preserve">
+    <value>A tipo do símbolo.</value>
+    <comment>Description for DomainProperty &apos;Tipo&apos; on DomainClass &apos;Simbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.Simbolo/Tipo.DisplayName" xml:space="preserve">
+    <value>Tipo do Símbolo</value>
+    <comment>DisplayName for DomainProperty &apos;Tipo&apos; on DomainClass &apos;Simbolo&apos;</comment>
+  </data>
   <data name="Maxsys.VisualLAL.Sinonimo.Description" xml:space="preserve">
     <value>Representa uma entrada única no LAL, sendo sinônimo de um símbolo.</value>
     <comment>Description for DomainClass &apos;Sinonimo&apos;</comment>
@@ -372,6 +380,46 @@
   <data name="Maxsys.VisualLAL.SimboloReferences/SimboloDestino.PropertyDisplayName" xml:space="preserve">
     <value>É Refenciado Por Simbolos</value>
     <comment>PropertyDisplayName for DomainRole &apos;SimboloDestino&apos; on DomainRelationship &apos;SimboloReferences&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/NãoClassificado.DisplayName" xml:space="preserve">
+    <value>NãoClassificado</value>
+    <comment>Display name for EnumerationLiteral &apos;NãoClassificado&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/NãoClassificado.Description" xml:space="preserve">
+    <value>Símbolo ainda não classificado.</value>
+    <comment>Description for EnumerationLiteral &apos;NãoClassificado&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Sujeito.DisplayName" xml:space="preserve">
+    <value>Sujeito</value>
+    <comment>Display name for EnumerationLiteral &apos;Sujeito&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Sujeito.Description" xml:space="preserve">
+    <value>Indica que o símbolo é um sujeito.</value>
+    <comment>Description for EnumerationLiteral &apos;Sujeito&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Verbo.DisplayName" xml:space="preserve">
+    <value>Verbo</value>
+    <comment>Display name for EnumerationLiteral &apos;Verbo&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Verbo.Description" xml:space="preserve">
+    <value>Description for Maxsys.VisualLAL.TipoSimbolo.Verbo</value>
+    <comment>Description for EnumerationLiteral &apos;Verbo&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Objeto.DisplayName" xml:space="preserve">
+    <value>Objeto</value>
+    <comment>Display name for EnumerationLiteral &apos;Objeto&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Objeto.Description" xml:space="preserve">
+    <value>Description for Maxsys.VisualLAL.TipoSimbolo.Objeto</value>
+    <comment>Description for EnumerationLiteral &apos;Objeto&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Estado.DisplayName" xml:space="preserve">
+    <value>Estado</value>
+    <comment>Display name for EnumerationLiteral &apos;Estado&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
+  </data>
+  <data name="Maxsys.VisualLAL.TipoSimbolo/Estado.Description" xml:space="preserve">
+    <value>Description for Maxsys.VisualLAL.TipoSimbolo.Estado</value>
+    <comment>Description for EnumerationLiteral &apos;Estado&apos; on DomainEnumeration &apos;TipoSimbolo&apos;</comment>
   </data>
   <data name="Maxsys.VisualLAL.SimboloCompartment.Description" xml:space="preserve">
     <value>Representação gráfica de um Símbolo</value>

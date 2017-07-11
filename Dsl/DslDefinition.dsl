@@ -48,6 +48,13 @@
       <BaseClass>
         <DomainClassMoniker Name="Entrada" />
       </BaseClass>
+      <Properties>
+        <DomainProperty Id="df99a777-1a1b-4822-a409-f488b333a3e8" Description="A tipo do símbolo." Name="Tipo" DisplayName="Tipo do Símbolo">
+          <Type>
+            <DomainEnumerationMoniker Name="TipoSimbolo" />
+          </Type>
+        </DomainProperty>
+      </Properties>
       <ElementMergeDirectives>
         <ElementMergeDirective>
           <Index>
@@ -209,6 +216,29 @@
     <ExternalType Name="Boolean" Namespace="System" />
     <ExternalType Name="Char" Namespace="System" />
     <ExternalType Name="Color" Namespace="System.Drawing" />
+    <DomainEnumeration Name="TipoSimbolo" Namespace="Maxsys.VisualLAL" Description="Description for Maxsys.VisualLAL.TipoSimbolo">
+      <Literals>
+        <EnumerationLiteral Description="Símbolo ainda não classificado." Name="NãoClassificado" Value="0">
+          <Notes>O símbolo precisa ser classificado em Sujeito, Verbo, Objeto ou Estado</Notes>
+        </EnumerationLiteral>
+        <EnumerationLiteral Description="Indica que o símbolo é um sujeito." Name="Sujeito" Value="1">
+          <Notes>Noção: Quem é o sujeito. 
+Impacto: Quais ações executa.</Notes>
+        </EnumerationLiteral>
+        <EnumerationLiteral Description="Description for Maxsys.VisualLAL.TipoSimbolo.Verbo" Name="Verbo" Value="2">
+          <Notes>Noção: Quem realiza, quando acontece e quais os procedimentos envolvidos.
+Impacto: Quais os reflexos da ação no ambiente (outras ações que devem ocorrer) e quais os novos estados decorrentes.</Notes>
+        </EnumerationLiteral>
+        <EnumerationLiteral Description="Description for Maxsys.VisualLAL.TipoSimbolo.Objeto" Name="Objeto" Value="3">
+          <Notes>Noção: Definir o objeto e identificar outros objetos com os quais se relaciona.
+Impacto: Ações que podem ser aplicadas ao objeto.</Notes>
+        </EnumerationLiteral>
+        <EnumerationLiteral Description="Description for Maxsys.VisualLAL.TipoSimbolo.Estado" Name="Estado" Value="4">
+          <Notes>Noção: O que significa e quais ações levaram a esse estado.
+Impacto: Identificar outros estados e ações que podem ocorrer a partir do estado que se descreve.</Notes>
+        </EnumerationLiteral>
+      </Literals>
+    </DomainEnumeration>
   </Types>
   <Shapes>
     <CompartmentShape Id="047c248e-a76e-48d9-8ad9-2b5e2df2be30" Description="Representação gráfica de um Símbolo" Name="SimboloCompartment" DisplayName="Compartmento de Símbolo" Namespace="Maxsys.VisualLAL" FixedTooltipText="Compartmento de Símbolo" FillColor="WhiteSmoke" InitialWidth="2" InitialHeight="0.3" OutlineThickness="0" FillGradientMode="ForwardDiagonal" Geometry="RoundedRectangle">
@@ -271,6 +301,9 @@
           <XmlRelationshipData UseFullForm="true" RoleElementName="referenciaSimbolos">
             <DomainRelationshipMoniker Name="SimboloReferences" />
           </XmlRelationshipData>
+          <XmlPropertyData XmlName="tipo">
+            <DomainPropertyMoniker Name="Simbolo/Tipo" />
+          </XmlPropertyData>
         </ElementData>
       </XmlClassData>
       <XmlClassData TypeName="Sinonimo" MonikerAttributeName="" SerializeId="true" MonikerElementName="sinonimoMoniker" ElementName="sinonimo" MonikerTypeName="SinonimoMoniker">
