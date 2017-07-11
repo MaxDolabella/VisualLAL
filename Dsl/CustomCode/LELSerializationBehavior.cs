@@ -46,20 +46,20 @@ namespace Maxsys.VisualLAL
                 var impactos = modelRoot.Simbolos.SelectMany(s => s.Impactos);
 
                 links.ApagarTudo();
-                entries.Clear();
+                entries.ApagarTudo();
 
                 
 
                 foreach (var s in simbolos)
                 {
                     //Debug.WriteLine(s.Nome);
-                    entries.Add(s);
+                    entries.Adicionar(s);
                 }
 
                 foreach (var s in sinonimos)
                 {
                     //Debug.WriteLine(s.Nome);
-                    entries.Add(s);
+                    entries.Adicionar(s);
                 }
                 
                 foreach (var n in nocoes)

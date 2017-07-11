@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,8 +8,10 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
     /// <summary>
     /// Represents a set of WordMap thats contains all uniques entries of LEL
     /// </summary>
-    public class MapeamentoEntradas : SortedSet<MapaDeEntrada>, IEnumerable<MapaDeEntrada>
+    public class MapeamentoEntradas : IEnumerable<MapaDeEntrada>
     {
+        private SortedSet<MapaDeEntrada> _lista;
+
         #region Singleton
         private static MapeamentoEntradas _instance;
         public static MapeamentoEntradas Instance
@@ -25,7 +28,9 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         }
 
         private MapeamentoEntradas()
-        { }
+        {
+            _lista = new SortedSet<MapaDeEntrada>();
+        }
         #endregion
 
 
@@ -59,8 +64,8 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         {
             get
             {
-                return this
-                    .Where(x => x.EntradaUnica == entradaUnica)
+                return _lista
+                    .Where(x => x.EntradaUnica.Equals(entradaUnica))
                     .SingleOrDefault();
             }
         }
@@ -68,8 +73,8 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         {
             get
             {
-                return this
-                    .Where(x => x.EntradaId == entradaId)
+                return _lista
+                    .Where(x => x.EntradaId.Equals(entradaId))
                     .SingleOrDefault();
             }
         }
@@ -77,8 +82,40 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
 
         #region Methods
-        
-        public bool Add(Simbolo simbolo)
+
+        #region Métodos Privados
+        private bool Add(MapaDeEntrada item)
+        {
+            var adicionado = false;
+            if (!_lista.Contains(item))
+                adicionado = _lista.Add(item);
+            return adicionado;
+        }
+        private void Remove(Guid entradaId)
+        {
+            var mapa = this[entradaId];
+            var result = _lista.Remove(mapa);
+            if (result)
+                OnEntryMapRemoved(mapa);
+        }
+
+        public IEnumerator<MapaDeEntrada> GetEnumerator()
+        {
+            return ((IEnumerable<MapaDeEntrada>)_lista).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<MapaDeEntrada>)_lista).GetEnumerator();
+        }
+
+        public void ApagarTudo()
+        {
+            _lista.Clear();
+        }
+        #endregion
+        #region Métodos Públicos
+        public bool Adicionar(Simbolo simbolo)
         {
             var novaEntrada = new MapaDeEntrada(simbolo);
 
@@ -88,7 +125,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
             return adicionado;
         }
-        public bool Add(Sinonimo sinonimo)
+        public bool Adicionar(Sinonimo sinonimo)
         {
             var novaEntrada = new MapaDeEntrada(sinonimo);
 
@@ -98,65 +135,40 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
             return adicionado;
         }
-        private new bool Add(MapaDeEntrada item)
-        {
-            var adicionado = false;
-            if (!Contains(item))
-                adicionado = base.Add(item);
-            return adicionado;
-        }
-        public void UpdateEntry(Entrada entrada)
+        
+        public void AtualizarEntrada(Entrada entrada)
         {
             var mapaAntigo = this[entrada.Id];
-            var mapaNovo = new MapaDeEntrada(entrada);
+            var novaEntrada = new MapaDeEntrada(entrada);
 
-            Remove(mapaAntigo);
+            _lista.Remove(mapaAntigo);
 
-            var adicionado = Add(mapaNovo);
+            var adicionado = Add(novaEntrada);
             if (adicionado)
-                OnEntryMapUpdated(mapaAntigo, mapaNovo);
+                OnEntryMapUpdated(mapaAntigo, novaEntrada);
+        }
+
+        public bool Contem(string uniqueWord)
+        {
+            return _lista.Any(m => m.EntradaUnica.ContainsExtactExpression(uniqueWord));
+        }
+        public bool Contem(Guid elementId)
+        {
+            return _lista.Any(m => m.EntradaId.Equals(elementId));
         }
         
-
-        public bool Contains(string uniqueWord)
-        {
-            return this.Any(m => m.EntradaUnica.ContainsExtactExpression(uniqueWord));
-        }
-        public bool Contains(Guid elementId)
-        {
-            return this.Any(m => m.EntradaId == elementId);
-        }
-
-
-        private void Remove(Guid entradaId)
-        {
-            if (Contains(entradaId))
-            {
-                var mapa = this[entradaId];
-                var result = Remove(mapa);
-                if (result)
-                    OnEntryMapRemoved(mapa);
-            }
-            else
-            {
-                throw new ArgumentException($"mapaEntradaset.Remove: There is no WordMap with elementId {{{entradaId}}}");
-            }
-        }
-        public void Remove(Simbolo simbolo)
+        public void Remover(Simbolo simbolo)
         {
             foreach (var s in simbolo.Sinonimos)
                 Remove(s.Id);
             Remove(simbolo.Id);
         }
-        public void Remove(Sinonimo sinonimo)
+        public void Remover(Sinonimo sinonimo)
         {
             Remove(sinonimo.Id);
         }
-        
-        public new IEnumerator<MapaDeEntrada> GetEnumerator()
-        {
-            return base.GetEnumerator();
-        }
+        #endregion
+
         #endregion
 
     }

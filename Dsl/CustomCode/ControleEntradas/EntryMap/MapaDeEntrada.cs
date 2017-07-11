@@ -63,7 +63,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         }
         public int CompareTo(MapaDeEntrada obj)
         {
-            return EntradaUnica.CompareTo(obj.EntradaUnica);
+            return EntradaUnica.CompareTo(obj.EntradaUnica) * -1;
         }
         #endregion
     }

@@ -114,7 +114,6 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
             return resultado;
         }
-
         private void Remove(MapaDeReferencia mapaDeReferencia)
         {
             var removido = _lista.Remove(mapaDeReferencia);
@@ -127,7 +126,6 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         {
             return _lista.Any(m => m.Equals(mapaDeReferencia));
         }
-
         private void AnalisaEAdicionaMapaDeReferencia(MapaDeEntrada mapaEntrada, SubEntrada subEntrada)
         {
             var textoContemAlgumaEntrada = subEntrada.Texto.ContainsExtactExpression(mapaEntrada.EntradaUnica);
@@ -162,7 +160,6 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         /// <param name="oldEntry">The old entry that needs to be removed</param>
         /// <param name="newEntry">The new entry that needs to be added</param>
         /// <param name="elementId">Represents the element (Simbolo or Sinonimo) owner of <paramref name="newEntry"/></param>
-
         public void AtualizaMapaDeReferenciaAposAlteracaoDeEntrada(MapaDeEntrada mapaAntigo, MapaDeEntrada mapaNovo)
         {
             /*debug*/System.Diagnostics.Debug.WriteLine($"Entrou em AtualizaMapaDeReferenciaAposAlteracaoDeEntrada o[{mapaAntigo.EntradaUnica}] n[{mapaNovo.EntradaUnica}]");

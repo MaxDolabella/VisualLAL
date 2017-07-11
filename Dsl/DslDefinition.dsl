@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Dsl xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="253d7860-58df-4bfe-b270-918282b83122" Description="Ferramenta para representar graficamente um Léxico Ampliado da Linguagem" Name="VisualLAL" DisplayName="VisualLAL" Namespace="Maxsys.VisualLAL" Build="1" ProductName="VisualLAL" CompanyName="Maxsys" PackageGuid="92b8be84-5876-454a-a110-d7663866aacd" PackageNamespace="Maxsys.VisualLAL" xmlns="http://schemas.microsoft.com/VisualStudio/2005/DslTools/DslDefinitionModel">
+<Dsl xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="253d7860-58df-4bfe-b270-918282b83122" Description="Ferramenta para representar graficamente um Léxico Ampliado da Linguagem" Name="VisualLAL" DisplayName="VisualLAL" Namespace="Maxsys.VisualLAL" MinorVersion="1" Build="1" ProductName="VisualLAL" CompanyName="Maxsys" PackageGuid="92b8be84-5876-454a-a110-d7663866aacd" PackageNamespace="Maxsys.VisualLAL" xmlns="http://schemas.microsoft.com/VisualStudio/2005/DslTools/DslDefinitionModel">
   <Classes>
     <DomainClass Id="731968b2-470a-405d-9f66-e7b0db7cd416" Description="É o objeto que contém todos os Símbolos" Name="LALDominio" DisplayName="LALDominio" Namespace="Maxsys.VisualLAL">
       <Properties>

@@ -15,11 +15,11 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             var simboloName = simbolo.Nome;
             var mapaEntradas = VisualLALMapeamento.Instance.MapaEntradas;
 
-            while (mapaEntradas.Contains(simboloName))
+            while (mapaEntradas.Contem(simboloName))
                 simboloName += "1";
 
             simbolo.Nome = simboloName;
-            mapaEntradas.Add(simbolo);
+            mapaEntradas.Adicionar(simbolo);
         }
     }
 
@@ -41,8 +41,8 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             var oldValue = e.OldValue as string;
             var newValue = e.NewValue as string;
 
-            var contemNewValue = mapaEntradas.Contains(newValue);
-            var contemElemento = mapaEntradas.Contains(e.ElementId);
+            var contemNewValue = mapaEntradas.Contem(newValue);
+            var contemElemento = mapaEntradas.Contem(e.ElementId);
             var newValueEhVazioOuNulo = string.IsNullOrWhiteSpace(newValue);
 
             if (!newValueEhVazioOuNulo)
@@ -51,11 +51,11 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 {
                     if (!contemElemento)
                     {
-                        mapaEntradas.Add(simbolo);
+                        mapaEntradas.Adicionar(simbolo);
                     }
                     else
                     {
-                        mapaEntradas.UpdateEntry(simbolo);
+                        mapaEntradas.AtualizarEntrada(simbolo);
                     }
                 }
                 else//contemNewValue
@@ -85,7 +85,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             if (e.ModelElement.Store.TransactionManager.CurrentTransaction.IsSerializing)
                 return;
             var simbolo = e.ModelElement as Simbolo;
-            VisualLALMapeamento.Instance.MapaEntradas.Remove(simbolo);
+            VisualLALMapeamento.Instance.MapaEntradas.Remover(simbolo);
         }
     }
 }

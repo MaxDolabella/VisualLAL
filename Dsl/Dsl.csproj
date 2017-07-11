@@ -81,6 +81,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializationHelper.cs</LastGenOutput>
     </None>
+    <Compile Include="CustomCode\ControleEntradas\EntryMap\ListaEntradas.cs" />
     <Compile Include="CustomCode\PrincipioDaCircularidade\Specification\WarningLevelSpecification\CadaSimboloDeveSerReferenciadoPorOutroSimboloSpecification.cs" />
     <Compile Include="CustomCode\PrincipioDaCircularidade\Specification\WarningLevelSpecification\CadaSimboloDeveReferenciarOutroSimboloSpecification.cs" />
     <Compile Include="CustomCode\PrincipioDaCircularidade\Validation\PrincipioDaCircularidadeWarningLevelValidator.cs" />
@@ -106,13 +107,13 @@
     <Compile Include="CustomCode\ValidationSpecificationDesignPattern\Interfaces\Validation\IValidator.cs" />
     <Compile Include="CustomCode\LELSerializationBehavior.cs" />
     <Compile Include="CustomCode\ControleEntradas\EntryMap\MapaDeEntrada.cs" />
-    <Compile Include="CustomCode\ControleEntradas\EntryMap\EntryMapSet.cs" />
+    <Compile Include="CustomCode\ControleEntradas\EntryMap\MapeamentoEntradas.cs" />
     <Compile Include="CustomCode\ControleEntradas\EntryMap\EventArgs\MapaDeEntradaEventArgs.cs" />
     <Compile Include="CustomCode\ControleEntradas\EntryMap\EventArgs\MapaDeEntradaAtualizadoEventArgs.cs" />
     <Compile Include="CustomCode\ControleEntradas\VisualLALMapeamento.cs" />
     <Compile Include="CustomCode\ControleEntradas\LinkMap\EventArgs\LinkMapEventArgs.cs" />
     <Compile Include="CustomCode\ControleEntradas\LinkMap\MapaDeReferencia.cs" />
-    <Compile Include="CustomCode\ControleEntradas\LinkMap\LinkMapSet.cs" />
+    <Compile Include="CustomCode\ControleEntradas\LinkMap\MapeamentoReferencias.cs" />
     <Compile Include="CustomCode\PrincipioDaCircularidade\Specification\ErrorLevelSpecification\CadaSimboloDeveReferenciarOuSerReferenciadoPorOutroSimboloSpecification.cs" />
     <Compile Include="CustomCode\PrincipioDaCircularidade\Validation\PrincipioDaCircularidadeErrorLevelValidator.cs" />
     <Compile Include="CustomCode\DomainClasses\Rules\Impacto.cs" />

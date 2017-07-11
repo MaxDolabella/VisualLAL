@@ -18,11 +18,11 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             var sinonimoNome = $"{simboloName}Sinônimo{simboloSinonimosCont}";
             var mapaEntradas = VisualLALMapeamento.Instance.MapaEntradas;
 
-            while (mapaEntradas.Contains(sinonimoNome))
+            while (mapaEntradas.Contem(sinonimoNome))
                 sinonimoNome += "1";
             sinonimo.Nome = sinonimoNome;
 
-            mapaEntradas.Add(sinonimo);
+            mapaEntradas.Adicionar(sinonimo);
         }
     }
 
@@ -41,8 +41,8 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
             var oldValue = e.OldValue as string;
             var newValue = e.NewValue as string;
 
-            var contemNewValue = mapaEntradas.Contains(newValue);
-            var contemElement = mapaEntradas.Contains(e.ElementId);
+            var contemNewValue = mapaEntradas.Contem(newValue);
+            var contemElement = mapaEntradas.Contem(e.ElementId);
             var newValueEhVazioOuNulo = string.IsNullOrWhiteSpace(newValue);
             
             if (!newValueEhVazioOuNulo)
@@ -51,11 +51,11 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 {
                     if (!contemElement)
                     {
-                        mapaEntradas.Add(sinonimo);
+                        mapaEntradas.Adicionar(sinonimo);
                     }
                     else
                     {
-                        mapaEntradas.UpdateEntry(sinonimo);
+                        mapaEntradas.AtualizarEntrada(sinonimo);
                     }
                 }
                 else//contemNewValue
@@ -86,7 +86,7 @@ namespace Maxsys.VisualLAL.CustomCode.Rules
                 return;
             var sinonimo = e.ModelElement as Sinonimo;
             var mapaEntradas = VisualLALMapeamento.Instance.MapaEntradas;
-            mapaEntradas.Remove(sinonimo);
+            mapaEntradas.Remover(sinonimo);
         }
     }
 }
