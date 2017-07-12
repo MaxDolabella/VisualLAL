@@ -2,3 +2,9 @@
 INSERIR o simbolo FUTEBOL
 INSERIR o simbolo JOGO DE FUTEBOL
 INSERIR a noção "JOGO DE FUTEBOL"
+
+Possível solução, criar algum mapa que salva tb o índice do início da palavra na string. 
+Assim se outro termo achar a palavra, se o índice estiver sendo usado, essa palavra já 
+estará sendo referenciada por outro mapa.
+
+Tentar criar por árvore, e ler sempre dá última pra cima. 
