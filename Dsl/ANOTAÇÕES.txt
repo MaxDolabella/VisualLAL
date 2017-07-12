@@ -8,3 +8,5 @@ Assim se outro termo achar a palavra, se o índice estiver sendo usado, essa pal
 estará sendo referenciada por outro mapa.
 
 Tentar criar por árvore, e ler sempre dá última pra cima. 
+
+Ao checar, fazer uma lista das palavras possíveis para aquele índice. Escolher sempre a maior.
