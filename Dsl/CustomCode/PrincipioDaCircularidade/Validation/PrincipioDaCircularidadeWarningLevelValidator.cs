@@ -11,10 +11,10 @@ namespace Maxsys.VisualLAL.CustomCode.PrincipioDaCircularidade.Validation
             var cadaSimboloDeveSerReferenciado = new CadaSimboloDeveSerReferenciadoPorOutroSimboloSpecification();
 
             base.AddRule(nameof(cadaSimboloDeveReferenciar),
-                new Rule<Simbolo>(cadaSimboloDeveSerReferenciado,
+                new Rule<Simbolo>(cadaSimboloDeveReferenciar,
                 "Princípio da Circularidade: Este símbolo não referencia nenhum outro símbolo."));
 
-            base.AddRule(nameof(cadaSimboloDeveReferenciar),
+            base.AddRule(nameof(cadaSimboloDeveSerReferenciado),
                 new Rule<Simbolo>(cadaSimboloDeveSerReferenciado,
                 "Princípio da Circularidade: Este símbolo não é referenciado por nenhum outro símbolo."));
         }

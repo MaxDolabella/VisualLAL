@@ -8,26 +8,26 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
     /// <summary>
     /// Represents a set of WordMap thats contains all uniques entries of LEL
     /// </summary>
-    public class MapeamentoEntradas : IEnumerable<MapaDeEntrada>
+    public class MapeamentoEntradasLISTA : IEnumerable<MapaDeEntrada>
     {
         private SortedSet<MapaDeEntrada> _lista;
 
         #region Singleton
-        private static MapeamentoEntradas _instance;
-        public static MapeamentoEntradas Instance
+        private static MapeamentoEntradasLISTA _instance;
+        public static MapeamentoEntradasLISTA Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new MapeamentoEntradas();
+                    _instance = new MapeamentoEntradasLISTA();
                 }
 
                 return _instance;
             }
         }
 
-        private MapeamentoEntradas()
+        private MapeamentoEntradasLISTA()
         {
             _lista = new SortedSet<MapaDeEntrada>();
         }

@@ -7,24 +7,24 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
     /// <summary>
     /// Represents a set of WordMap thats contains all uniques entries of LEL
     /// </summary>
-    public class MapeamentoEntradasBAK : SortedSet<MapaDeEntrada>, IEnumerable<MapaDeEntrada>
+    public class MapeamentoEntradas : SortedSet<MapaDeEntrada>, IEnumerable<MapaDeEntrada>
     {
         #region Singleton
-        private static MapeamentoEntradasBAK _instance;
-        public static MapeamentoEntradasBAK Instance
+        private static MapeamentoEntradas _instance;
+        public static MapeamentoEntradas Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new MapeamentoEntradasBAK();
+                    _instance = new MapeamentoEntradas();
                 }
 
                 return _instance;
             }
         }
 
-        private MapeamentoEntradasBAK()
+        private MapeamentoEntradas()
         { }
         #endregion
 
@@ -78,7 +78,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
         #region Methods
         
-        public bool Add(Simbolo simbolo)
+        public bool Adicionar(Simbolo simbolo)
         {
             var novaEntrada = new MapaDeEntrada(simbolo);
 
@@ -88,7 +88,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
             return adicionado;
         }
-        public bool Add(Sinonimo sinonimo)
+        public bool Adicionar(Sinonimo sinonimo)
         {
             var novaEntrada = new MapaDeEntrada(sinonimo);
 
@@ -105,7 +105,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
                 adicionado = base.Add(item);
             return adicionado;
         }
-        public void UpdateEntry(Entrada entrada)
+        public void AtualizarEntrada(Entrada entrada)
         {
             var mapaAntigo = this[entrada.Id];
             var mapaNovo = new MapaDeEntrada(entrada);
@@ -118,11 +118,11 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         }
         
 
-        public bool Contains(string uniqueWord)
+        public bool Contem(string uniqueWord)
         {
             return this.Any(m => m.EntradaUnica.ContainsExtactExpression(uniqueWord));
         }
-        public bool Contains(Guid elementId)
+        public bool Contem(Guid elementId)
         {
             return this.Any(m => m.EntradaId == elementId);
         }
@@ -130,7 +130,7 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
 
         private void Remove(Guid entradaId)
         {
-            if (Contains(entradaId))
+            if (Contem(entradaId))
             {
                 var mapa = this[entradaId];
                 var result = Remove(mapa);
@@ -142,13 +142,13 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
                 throw new ArgumentException($"mapaEntradaset.Remove: There is no WordMap with elementId {{{entradaId}}}");
             }
         }
-        public void Remove(Simbolo simbolo)
+        public void Remover(Simbolo simbolo)
         {
             foreach (var s in simbolo.Sinonimos)
                 Remove(s.Id);
             Remove(simbolo.Id);
         }
-        public void Remove(Sinonimo sinonimo)
+        public void Remover(Sinonimo sinonimo)
         {
             Remove(sinonimo.Id);
         }
@@ -157,6 +157,12 @@ namespace Maxsys.VisualLAL.CustomCode.Maps
         {
             return base.GetEnumerator();
         }
+
+        public void ApagarTudo()
+        {
+            this.Clear();
+        }
+
         #endregion
 
     }

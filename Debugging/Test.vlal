@@ -1,1 +1,357 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lALDominio xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.1.1.0" Id="cfbc176e-125a-4c69-afff-227a47ae56c0" nome="Light Control Problem" descricao="This site contains the LEL (Language Extended Lexicon) of the Problem Description of the &quot;Light Control Problem&quot;, updated until August 27, 1999. The lexicon is itself a hipertext. The navigation may start by any of its entries, so each entry in this page is a hyperlink to the description associated with that entry. Since the lexicon is defined as a closure relation, all the entries are explained with references to other entries in the lexicon" xmlns="http://schemas.microsoft.com/dsltools/VisualLAL">
+  <simbolos>
+    <dominioTemSimbolos Id="95a17fe0-fb1b-48b4-8046-4610811027f8">
+      <simbolo Id="dcfc1527-2ae1-4106-87e0-fc490f3a0b24" nome="Control system" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="bfca6878-de7b-41e3-9aab-542b9841df73">
+            <nocao Id="ca8a2533-f863-4e66-a74b-99902e7d7840" texto="Hardware and software control system that controls indoor climate, lighting , safety and security" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="80189ea6-a82b-4ca9-a588-7f12957ca0e5">
+            <nocao Id="89083c8c-13b3-4af1-8275-68cf264314b6" texto="Control system active is an output of the control system" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="382429b6-06b0-4abb-826d-420cdfda0966">
+            <nocao Id="783fd58b-a28d-49ee-99c2-40bc62fe0d4d" texto="The control system can access only digital values" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="e0e1bf07-0d52-4d5b-b842-8c23587283ba">
+            <impacto Id="001eba77-0478-4164-b5ea-6c0ea33c1778" texto="The control system should address non-functional requirements NF1 , NF4 and NF5" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="879a1b1f-9263-42bd-a8bc-4b25a10ba7d8">
+            <impacto Id="c61ea1bd-d845-4891-b6ba-af601956d721" texto="The control system uses a pulse to toggle the light" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="8ffcbc55-d17a-4fbe-b96f-2a04ae6447f0">
+            <impacto Id="813b4995-13bd-4908-8401-1891516092a2" texto="If a malfunction occurs, the control system supports the facility manager in finding the reason" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="0e7bded1-4516-4d7f-b481-8404009f6e0f">
+            <sinonimo Id="8e4cba07-c8a4-49a2-8b51-56f80d81c715" nome="control system" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="d8faaaec-d3b4-4015-b03f-43e3d56900ba">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Pulse" />
+          </simboloReferences>
+          <simboloReferences Id="a36c9d3e-baae-4ea6-8532-9a197a977bdc">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Malfunction" />
+          </simboloReferences>
+          <simboloReferences Id="07f904d9-8755-4221-97f6-40bb115dcf1b">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Facility manager" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="aebeca2a-94e8-418c-92f7-463fc125435b">
+      <simbolo Id="5d4159f7-b9ac-4b84-a442-90add8cc41f5" nome="Pulse" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="5a469fd6-2b29-4ea7-8c47-29280d90bb05">
+            <nocao Id="cc70da08-2031-40f7-9e31-c92027bce1bb" texto="It's an actuator" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="c6e32686-a5bc-42d8-a578-44a19436c0fe">
+            <nocao Id="a42951ac-e03c-47ae-aafd-43e48a06c41e" texto="It is an input to the dimmable light" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="f19d81f1-6f8f-43f7-98a3-59dde6b88510">
+            <nocao Id="aad3e374-728f-4c98-b5a8-1ca779751197" texto="It has range of 0,1 and reaction time of 10ms" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="451df2c3-dcb4-455a-9ade-43c3cfcff9a5">
+            <impacto Id="0bed16b0-c271-4233-b9cb-747565baf189" texto="It toggles the light" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="e53623db-2229-4f05-a06c-4cd88ce4c1eb">
+            <impacto Id="b6ca8e80-4c57-4abf-8b04-a04dc9317db8" texto="It is sent to the dimmable light by the control system" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="afddb28e-d978-46ad-b6a0-49931e9c5b45">
+            <impacto Id="21a35b8a-a356-4122-996b-294d7aaa8b24" texto="If its value change from 0 to 1 the corresponding light changes from on to off or from off to on" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="303276bf-d461-4c44-a92f-5dc882a334cf">
+            <sinonimo Id="6717bbe6-2708-407a-a222-b43afe858f9c" nome="pulse" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="397b6001-3324-4728-bb1a-e677beab7c0b">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Actuators" />
+          </simboloReferences>
+          <simboloReferences Id="f74d0c9b-2d4a-40f5-91dc-4845cc56277d">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Dimmable light" />
+          </simboloReferences>
+          <simboloReferences Id="6db492f4-11f6-4416-b85c-b6323ad4901b">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Reaction time" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="25349333-8c51-4701-b279-440e9f7c8601">
+      <simbolo Id="70298b9b-d71e-4a27-930e-716f5416c507" nome="Actuators" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="e213a322-78f5-41a8-bc0c-de1e5a40661f">
+            <nocao Id="2719d494-a181-4612-badb-b94d4407325d" texto="It is a device that can be controlled by control system" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="02c2ebcc-d4a9-4777-ae1a-96bd86ee34f7">
+            <nocao Id="9bc24eb9-2a5c-4e1f-a861-268baf00ea61" texto="An actuator has type, range, control, reaction time and a description" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="494312bc-9876-48b5-aed7-d94e57daffdd">
+            <impacto Id="ecf3a01f-fcb6-42a2-982c-54f036e4ff34" texto="It is controlled by the control system" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="c7355570-b59c-4430-b264-df7d5ebbd61f">
+            <impacto Id="47f8aceb-e180-41f3-acb6-fa35108d66f7" texto="An actuator responds in linear time" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="1c985ab0-c025-4566-9f32-9ff0d9a166a3">
+            <sinonimo Id="abe1e47c-a1c8-42ad-8584-30e58b30d349" nome="Actuator" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="e9902b35-c119-492b-b335-1e40c9b55c3f">
+            <sinonimo Id="d57e4c4b-fc4d-4ac5-9653-5ab50835de72" nome="actuator" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="6dcbde0b-c676-4cde-87c8-9790b3f9f41b">
+            <sinonimo Id="3c06d1aa-eb34-4082-8818-b194bfd8dfe7" nome="actuators" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="7bc02730-8817-43cc-8066-a4099b05872a">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Control system" />
+          </simboloReferences>
+          <simboloReferences Id="3970b689-73fe-4e6d-89ac-0b8df495781f">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Type" />
+          </simboloReferences>
+          <simboloReferences Id="22b8d6bd-a6bc-4ce7-a063-958ca6a2f60d">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Reaction time" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="0d2cfbc5-41fe-4286-9e7d-36638f42d466">
+      <simbolo Id="1122d1dd-9870-484c-b1d6-839d0b7b7998" nome="Type" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="461fea53-5595-4177-8ba8-8625e657ab5a">
+            <nocao Id="db3e1640-4e20-4300-98ad-29ea1a3b6175" texto="It is an attribute of sensor and actuator" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="b137d73d-70c4-4b9f-af65-934137821f06">
+            <impacto Id="74bd6be7-9472-4383-98dc-9206f4d39ed7" texto="Sem" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="bf6e0eb5-6e18-4dc1-8bf0-657b70356e7d">
+            <sinonimo Id="e4cdf7f1-bdcb-430a-9681-69737caf40fb" nome="type" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="f31ab5fa-9237-4229-ae94-fa1495bed8d8">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Sensors" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="346cd564-ae17-473a-a0da-da122e29fc64">
+      <simbolo Id="136aa140-24ca-4e4b-9dab-136382f2c8c1" nome="Sensors" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="ec1449d0-7b4d-47a1-b34c-aa9a7b9da106">
+            <nocao Id="28cdab6a-569d-4009-a580-bcb7e8f9518b" texto="A device that can sense something" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="9c211c07-bd35-4208-a5d1-3d30280c7202">
+            <nocao Id="dc93d388-9043-4230-a02a-339d08a36399" texto="A sensor has name, type, resolution, range, reaction time and conversion time" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="9cd55e27-bde5-45c9-87e1-7e04f1818047">
+            <impacto Id="739d396d-b5c4-4017-9a4f-3761f6d8bcf2" texto="Analog sensors respond in exponential time" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="805b3258-1268-4eb9-b539-c09840776646">
+            <sinonimo Id="0cfb4370-b402-4e02-9a81-77065519d52a" nome="Sensor" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="9f76f4a8-7004-427c-8de9-11e0dead79a5">
+            <sinonimo Id="d21e7d81-8cd7-475e-86c8-90ef4f339cc0" nome="sensor" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="e28af96c-4a51-4a44-a421-918c0fb4e791">
+            <sinonimo Id="78ac4f45-89e5-48ac-8eaa-1b892b667002" nome="sensors" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="529ee89e-c70d-47a4-9a3f-3dd9c01b90ad">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Reaction time" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="1a16ba26-46a9-4c86-b05e-25a162802de8">
+      <simbolo Id="4be3df46-9f58-4682-aefd-b4536a01b410" nome="Malfunction" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="a6b55838-1986-4008-852e-3c3fee010fde">
+            <nocao Id="2b57057c-3062-469b-afa3-3eada11f7129" texto="Incorrect behavior of a device" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="be1b53d5-4a36-455b-8533-1e287740663b">
+            <impacto Id="542339e2-3535-41e1-abdf-030109bd315e" texto="All malfunctions are stored and reported on request" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="8e6294cc-6bae-42e4-9f51-6d6030b475c8">
+            <impacto Id="558de1bd-518b-41ac-8aa1-cca1126b806d" texto="The facility manager has to be informed" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="88be0efa-f1ce-47e1-a7dc-e413614695f5">
+            <impacto Id="7213c15c-502d-4611-9ad2-b9458d01e00d" texto="The control system supports the facility manager by finding the reason for a malfunction" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="525d8716-75c2-40c1-8372-39ccbf4a8c34">
+            <sinonimo Id="a1778c4d-f155-41ef-9538-0f06062c569f" nome="malfunction" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="00573607-f8d0-4ff1-bd94-906761aee421">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Facility manager" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="51ddfd18-12b6-4873-8a83-00a39c0da94a">
+      <simbolo Id="75848ec9-73ae-43cd-85f6-57268f90e58c" nome="Facility manager" tipo="Sujeito">
+        <nocoes>
+          <simboloTemNocoes Id="5d7c2827-8f9e-46b9-962f-0edfa7f25735">
+            <nocao Id="17a0db8e-df0b-41b9-8972-eebd8652462f" texto="Person responsible for running a building on a daily basis" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="08b6f334-ae48-45a3-9de2-2691a6013648">
+            <impacto Id="30ab07a0-f8f5-473e-b34a-1447ca970c07" texto="It has needs regarding the new light control system" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="f2240243-896d-405f-b836-02920c692445">
+            <impacto Id="15c6066c-032d-4b60-b6dc-acc3d3ad40f0" texto="Can turn off any light in a room or in a hallway section" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="f7907917-fb0a-4043-bdf7-8f5346de91b3">
+            <impacto Id="12041125-211f-464c-8d65-a326469cbf5d" texto="It uses the facility manager control panel .If a malfunction occurs, the facility manager has to be informed" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="a7627bbd-c5ec-485a-97cb-93cc227db6b3">
+            <impacto Id="89a142bc-20b1-47ee-ab06-562420336877" texto="If a malfunction occurs, the control system supports the facility manager in finding the reason" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="e7931fb1-e5c2-4c9b-b84f-56347f5cda8b">
+            <sinonimo Id="7bd206c1-9cbc-4265-a00a-f1e525dce0a8" nome="facility manager" />
+          </simboloTemSinonimos>
+        </sinonimos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="b288c3b5-f614-4e6e-bec0-755740d9553a">
+      <simbolo Id="fb152247-f0c8-46e4-8de8-8395b388ed6f" nome="Dimmable light" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="d49d15fc-4c4c-43b0-a105-ca7b73a97179">
+            <nocao Id="43df7bf3-0354-452d-9c70-7b4201d0b6a2" texto="It is a luminaire that can be dimmed" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="6fca215a-062a-40ff-bfc4-54a08c0f13bf">
+            <nocao Id="bdfdc901-aaa3-4675-abe1-d87b38d7e4c3" texto="Only lights at the offices, hardware labs and computer lab can be dimmed" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="083654e4-4bf7-4285-85b8-9c2e97d855fd">
+            <nocao Id="5420282c-97ff-4cd1-8df3-930e556dc335" texto="t has as inputs a pulse, a dimmer, and control system active" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="82fadef4-83aa-4335-81b9-14f6a92974b6">
+            <nocao Id="05120683-6863-4d24-903d-491c4c3776fb" texto="It has as output the status line" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="2fed1577-6b0b-4c2c-a80b-8c1c5ef725ab">
+            <impacto Id="3f418bea-4a0c-4cce-9dbf-7b6a77b96f98" texto="It is controlled by the control system" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="3098c550-1075-4369-83df-cc8c32cc6ea0">
+            <impacto Id="d604edf2-7aee-4845-beab-9cf55995fe0b" texto="If the signal control system active is not sent every 60s , the dimmable light switches to fail safe mode, i.e. , dim value is assumed to be 100%" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="b6929d3b-eb95-4b2b-8470-d82903155dbf">
+            <sinonimo Id="8dbd4279-011c-4b75-8770-0ea328ba4ded" nome="dimmable light" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="a2917166-a763-43ed-9199-3aeee26f5554">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Control system" />
+          </simboloReferences>
+          <simboloReferences Id="8c2fa85d-19c2-49fb-ba2e-f2ff6ec2918d">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Dimmer" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="240d98cd-6903-4f88-8ace-a20d3f791214">
+      <simbolo Id="421cdb06-3c2c-4002-bcad-2f69f64fad90" nome="Dimmer" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="d66af6b4-5c3e-49b3-a7a1-520398b55d62">
+            <nocao Id="788f6984-9a77-4308-bbf6-9187b77e8f0b" texto="It is an actuator controlling the output of a luminaire" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="b2cd5f3b-0897-4f58-8796-7f945667fb5b">
+            <nocao Id="c67760ae-bc93-4639-8135-bd9c73ac94ab" texto="Its range is of 0 - 100%, and its reaction time is of 10ms" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="9e50b391-9aae-4808-bc45-e642f9d08325">
+            <impacto Id="0b3dc22c-11ce-427a-88f0-bcc12e4bafef" texto="It is used to dim ceiling light groups" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="d4a1d206-1233-4fd1-8076-3a3c8063d056">
+            <sinonimo Id="3e84cf99-4731-4d11-9dd4-8f27107beeb1" nome="dimmer" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="a1e11a5f-a67f-4027-aab2-3101220ce6bc">
+            <sinonimo Id="b052f6a9-127b-4986-a128-947a853c231d" nome="Dimmer-actuator" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="a8a58ff6-607b-4b15-bbdf-de4d010ecb85">
+            <sinonimo Id="1a10fed7-f47e-449f-88cb-94bc91105570" nome="Dimmer-actuators" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="5f1e0542-57e2-41a1-923a-8824c299adbb">
+            <sinonimo Id="e2c960aa-cae7-4e2d-b057-ef86825dc84f" nome="dimmer-actuator" />
+          </simboloTemSinonimos>
+          <simboloTemSinonimos Id="42e0350a-2318-488e-8f6f-c63526e2935a">
+            <sinonimo Id="71606238-4cf3-4345-af7b-d89fe58a195f" nome="dimmer-actuators" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="c9f6d746-e5ad-411b-ba10-7557d13a5956">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Actuators" />
+          </simboloReferences>
+          <simboloReferences Id="1fa6fbf7-6299-4ebe-9e48-3b2ef44c5a5d">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Reaction time" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+    <dominioTemSimbolos Id="de5e1511-4a61-4847-92b7-9e0052848d46">
+      <simbolo Id="15cd3284-1733-46d8-9f4c-17539b45c913" nome="Reaction time" tipo="NãoClassificado">
+        <nocoes>
+          <simboloTemNocoes Id="38d3a2ce-e920-4f8c-a4c9-8148ed856990">
+            <nocao Id="1455566a-bd38-4727-acf8-41ac4ddef7c8" texto="For a sensor , it is the time from a change of the sensed property to the time when the sensor has reached 90% of the change, excluding conversion time" />
+          </simboloTemNocoes>
+          <simboloTemNocoes Id="87bd1cb3-4b50-44c4-8056-b131bb5ec57c">
+            <nocao Id="8cfdb84b-015b-493a-975e-3aab57bab0fd" texto="For an actuator , it is the time to change from 0 to 100% respectively 100 to 0%, if different" />
+          </simboloTemNocoes>
+        </nocoes>
+        <impactos>
+          <simboloTemImpactos Id="f6e45a35-e4bf-4cbb-a531-89994570537f">
+            <impacto Id="7c24cedb-f6df-4ff0-8d17-a9a6a241aaf7" texto="The control system will only receive a change in a sensor after the reaction time plus the conversion time" />
+          </simboloTemImpactos>
+          <simboloTemImpactos Id="bca4a8f4-dc0c-4e02-80d5-96b244e9c951">
+            <impacto Id="356bb25d-52a1-4e0b-af3c-090b1310827d" texto="A change in an actuator by the control system will only be complete after the reaction time" />
+          </simboloTemImpactos>
+        </impactos>
+        <sinonimos>
+          <simboloTemSinonimos Id="a479b5d6-0101-4b9d-b24a-6ec798821785">
+            <sinonimo Id="d8d810c8-f876-4511-931e-5e1c277d6f7a" nome="reaction time" />
+          </simboloTemSinonimos>
+        </sinonimos>
+        <referenciaSimbolos>
+          <simboloReferences Id="ddb31b2b-29a8-4c75-ac57-cc0801932d65">
+            <simboloMoniker nome="/cfbc176e-125a-4c69-afff-227a47ae56c0/Control system" />
+          </simboloReferences>
+        </referenciaSimbolos>
+      </simbolo>
+    </dominioTemSimbolos>
+  </simbolos>
+</lALDominio>
